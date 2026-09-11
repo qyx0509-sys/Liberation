@@ -4,6 +4,16 @@
 
 扩展现在使用一套统一 Resume JSON：扫描报名系统栏目和当前真实 DOM，按语义匹配普通字段、下拉框、日期、重复经历和文件上传字段。页面名称只提供上下文，不再以“页面置信度”为是否填写的硬门槛。无法可靠匹配的字段会留给人工确认。
 
+## 界面预览
+
+申请资料工作台集中维护个人信息、教育、经历、科研、奖励及申请附加信息，并显示各栏目填写进度。
+
+![申请资料工作台](docs/images/profile-workspace.png)
+
+网页悬浮助手显示当前栏目、任务进度、待确认项目和运行日志，可随时暂停或停止。
+
+![网页悬浮助手](docs/images/floating-assistant.png)
+
 ## 能做什么
 
 - 在 Popup 中扫描左侧或顶部导航，建立基本信息、教育经历、奖励、科研、项目、论文等栏目队列；
@@ -32,7 +42,7 @@
 
 ## 下载、构建与安装
 
-不熟悉 Git 的用户可以在项目 GitHub 页面点击 **Code → Download ZIP**，下载后解压。若拿到的是已构建发布包，直接使用其中包含 `manifest.json` 的 `dist` 目录。
+普通用户可在 [Releases](https://github.com/qyx0509-sys/Liberation/releases) 下载 `Liberation-v3.0.3.zip`，解压后选择其中包含 `manifest.json` 的目录加载扩展。GitHub 页面上的 **Code → Download ZIP** 是源码包，需要先按下方说明构建。
 
 开发版可在项目根目录运行：
 
