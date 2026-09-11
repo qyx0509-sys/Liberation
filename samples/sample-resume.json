@@ -1,0 +1,140 @@
+{
+  "profileName": "默认申请资料",
+  "personal": {
+    "name": "示例同学",
+    "namePinyin": "SHILI TONGXUE",
+    "healthStatus": "健康",
+    "gender": "男",
+    "birthday": "",
+    "age": "",
+    "phone": "",
+    "email": "",
+    "wechat": "",
+    "qq": "",
+    "id_number": "",
+    "political": "中国共产党预备党员",
+    "ethnicity": "汉族",
+    "nationality": "中国",
+    "hometown_province": "",
+    "hometown_city": "",
+    "current_city": "",
+    "address": "",
+    "marital": "未婚",
+    "height": "175",
+    "weight": ""
+  },
+  "intention": {
+    "status": "应届毕业生",
+    "type": "全职",
+    "industry": "互联网/AI",
+    "position": "大模型应用工程师",
+    "city": "上海",
+    "salary": "15k-25k",
+    "available": "2025-07-01"
+  },
+  "education": [
+    {
+      "school": "示例大学",
+      "major": "计算机科学与技术",
+      "degree": "本科",
+      "start": "2021-09",
+      "end": "2025-06",
+      "school_type": "985/211",
+      "gpa": "3.8",
+      "rank": "5/120",
+      "honors": "国家奖学金、优秀学生干部",
+      "activities": "ACM 竞赛队队长、计算机协会副主席",
+      "research": "大语言模型推理优化",
+      "thesis": "基于 KV Cache 压缩的 LLM 推理加速方法研究"
+    }
+  ],
+  "internship": [
+    {
+      "company": "示例科技企业",
+      "position": "大模型应用实习生",
+      "start": "2024-07",
+      "end": "2024-12",
+      "location": "杭州",
+      "salary": "350/天",
+      "company_size": "10万人以上",
+      "manager": "",
+      "desc": "1. 参与通义千问 API 的业务落地，负责工具调用（Function Calling）模块的设计与实现\n2. 优化 Prompt 工程流水线，将意图识别准确率从 82% 提升至 94%\n3. 独立完成面向企业客户的智能问答系统 Demo，获得 P8 好评",
+      "leave_reason": "实习结束"
+    }
+  ],
+  "work": [],
+  "projects": [
+    {
+      "name": "浏览器表单辅助工具",
+      "role": "独立开发者",
+      "start": "2024-10",
+      "end": "至今",
+      "url": "",
+      "team_size": "1",
+      "desc": "基于 Chrome MV3 开发的求职辅助插件，支持正则匹配和 AI 智能两种填写模式。集成 OpenAI/Claude/通义等多家 LLM 接口，通过 React Fiber 遍历解决招聘平台自定义组件的填写问题，支持 PDF/DOCX/MD 格式简历导入。"
+    },
+    {
+      "name": "轻量级 RAG 知识库系统",
+      "role": "后端开发",
+      "start": "2024-03",
+      "end": "2024-06",
+      "url": "",
+      "team_size": "3",
+      "desc": "基于 LangChain + ChromaDB 构建本地私有知识库，实现 PDF/Word 文档的向量化检索。接入 qwen-turbo 作为生成模型，支持多轮对话和来源引用，部署于 Docker 容器。"
+    }
+  ],
+  "awards": [
+    {
+      "time": "2025-7",
+      "location": "青岛",
+      "content": "中国大学生高分子材料创新创业大赛国家级奖项",
+      "level": "国家级",
+      "rank": "一等奖",
+      "organizer": "示例竞赛组委会",
+      "certificateFileName": "award-example.pdf",
+      "note": "示例数据，不对应任何真实个人"
+    },
+    {
+      "time": "2025-7",
+      "location": "",
+      "content": "全国大学生高分子材料实验实践大赛国家级奖项",
+      "level": "国家级",
+      "rank": "",
+      "organizer": "",
+      "certificateFileName": "",
+      "note": "地点为空时应跳过填写"
+    }
+  ],
+  "skills": {
+    "tech": "Python / PyTorch / LangChain / FastAPI（熟练）\nJavaScript / TypeScript / React / Node.js（熟练）\nGo（了解）\nDocker / Linux / Git（熟练）\n大模型：Prompt Engineering、RAG、Function Calling、微调（LoRA）",
+    "workplace": "英语 CET-6（572分）、良好的技术文档写作能力、有跨团队项目协作经验",
+    "interests": "开源项目贡献、羽毛球、摄影",
+    "career_plan": "希望在大模型落地方向深耕，3年内成为 LLM 应用架构师",
+    "certificates": "CET-6（572分）\nPAT 甲级满分\n阿里云 ACA 云计算认证",
+    "cover_letter": "我对大模型应用方向充满热情，具备从 Prompt 设计到工程落地的完整能力。在阿里实习期间独立完成了多个 LLM 落地项目，善于将前沿研究快速转化为可用产品。希望能在贵公司持续成长，共同推动 AI 技术落地。"
+  },
+  "languages": [
+    {
+      "language": "英语",
+      "certificate": "CET-6",
+      "exam_date": "2023-06",
+      "score": "572",
+      "speaking": "良好",
+      "writing": "良好"
+    }
+  ],
+  "papers": [
+    {
+      "title": "KV Cache Compression for Efficient LLM Inference",
+      "journal": "ACL 2025（在审）",
+      "author_rank": "一作",
+      "status": "审稿中",
+      "url": ""
+    }
+  ],
+  "intro": "计算机科学专业应届生，专注大模型应用方向。具备扎实的工程能力和 AI 产品落地经验，在阿里实习期间主导完成多个 LLM 工程项目。喜欢解决实际问题，关注开源社区动态，有多个个人项目在 GitHub 开源。",
+  "github": "",
+  "homepage": "",
+  "family": "",
+  "customFields": []
+}

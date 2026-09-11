@@ -1,0 +1,25 @@
+{
+  "profileName": "默认申请资料",
+  "awards": [
+    {
+      "time": "2025-7",
+      "location": "青岛",
+      "content": "中国大学生高分子材料创新创业大赛国家级奖项",
+      "level": "国家级",
+      "rank": "",
+      "organizer": "",
+      "certificateFileName": "",
+      "note": ""
+    },
+    {
+      "time": "2025-7",
+      "location": "",
+      "content": "全国大学生高分子材料实验实践大赛国家级奖项",
+      "level": "国家级",
+      "rank": "",
+      "organizer": "",
+      "certificateFileName": "",
+      "note": "地点为空时，填表程序应跳过地点字段"
+    }
+  ]
+}

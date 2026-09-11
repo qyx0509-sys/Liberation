@@ -1,0 +1,18 @@
+
+===== npm run build (exit 0) =====
+
+> jiefang-local-form-filler@3.0.3 build
+> node scripts/build.mjs
+
+构建完成：D:\5.工作\浏览器扩展开发\解放\dist
+
+
+===== npm run build (exit 0) =====
+
+> jiefang-local-form-filler@3.0.3 build
+> node scripts/build.mjs
+
+构建完成：D:\5.工作\浏览器扩展开发\解放\dist
+
+
+Source/dist SHA-256 parity: 91 files; mismatches: []

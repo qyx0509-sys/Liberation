@@ -1,0 +1,45 @@
+Phase 3.5 Final Closure — Build and Runtime Result
+Generated: 2026-09-10 (Asia/Shanghai)
+
+Build command: npm.cmd run build
+Build result: PASS
+Build output: D:\5.工作\浏览器扩展开发\解放\dist
+Build method: scripts/build.mjs staging + replace flow; dist was not edited by hand.
+
+Version gate:
+  package.json: 3.0.3
+  manifest.json: 3.0.3
+  dist/manifest.json: 3.0.3
+  Result: PASS
+
+Runtime freshness gate:
+  popup.js: jiefang-page-runtime-v2
+  src/content-controller.js: jiefang-page-runtime-v2
+  dist/popup.js: jiefang-page-runtime-v2
+  dist/src/content-controller.js: jiefang-page-runtime-v2
+  Stale reachable controller behavior: fail closed and require page reload
+  Result: PASS
+
+Runtime wiring audit:
+  Focused runtime/build tests: 14 / 14 PASS
+  Popup injection list: 49 entries, 49 unique
+  Source/dist injection order: identical
+  Required dependency-order relationships: PASS
+  Manifest V3 entry resources: present
+  Built MV3 extension/service worker/popup load: 3 / 3 PASS
+  Result: PASS
+
+Source/build parity:
+  dist files checked: 84
+  SHA-256 matches: 84
+  Missing source counterparts: 0
+  Hash mismatches: 0
+  Result: PASS
+
+Syntax gate:
+  Added/modified JS/MJS checked relative to frozen baseline: 30
+  PASS: 30
+  FAIL: 0
+
+No dependency installation, remote AI call, network service, automatic final submit,
+or manual mutation of generated dist files was used.

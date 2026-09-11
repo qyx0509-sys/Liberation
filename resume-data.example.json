@@ -1,0 +1,122 @@
+{
+  "profileName": "默认申请资料",
+  "personal": {
+    "name": "示例同学",
+    "namePinyin": "SHILI TONGXUE",
+    "healthStatus": "健康",
+    "gender": "男",
+    "birthday": "",
+    "age": "",
+    "phone": "",
+    "email": "",
+    "wechat": "",
+    "qq": "",
+    "id_number": "",
+    "political": "中国共产党预备党员",
+    "ethnicity": "汉族",
+    "nationality": "中国",
+    "hometown_province": "",
+    "hometown_city": "",
+    "current_city": "",
+    "address": "",
+    "marital": "未婚",
+    "height": "",
+    "weight": ""
+  },
+  "intention": {
+    "status": "应届毕业生",
+    "type": "全职",
+    "industry": "互联网",
+    "position": "前端开发工程师",
+    "city": "北京",
+    "salary": "15k-20k",
+    "available": "随时到岗"
+  },
+  "education": [
+    {
+      "school": "示例大学",
+      "major": "计算机科学与技术",
+      "degree": "本科",
+      "start": "2020-09",
+      "end": "2024-06",
+      "school_type": "985/211",
+      "gpa": "3.8",
+      "rank": "10/120",
+      "honors": "国家奖学金",
+      "activities": "ACM 校队成员",
+      "research": "",
+      "thesis": ""
+    }
+  ],
+  "work": [
+    {
+      "company": "某科技有限公司",
+      "position": "前端开发实习生",
+      "location": "北京",
+      "start": "2023-07",
+      "end": "2023-09",
+      "salary": "",
+      "company_size": "500-1000人",
+      "manager": "",
+      "desc": "参与公司官网改版，使用 React + TypeScript 开发，优化页面性能，首屏加载速度提升 30%。",
+      "leave_reason": "实习结束"
+    }
+  ],
+  "internship": [],
+  "projects": [
+    {
+      "name": "课程项目示例",
+      "start": "2023-01",
+      "end": "2023-06",
+      "url": "",
+      "role": "独立开发",
+      "team_size": "1",
+      "desc": "基于 Next.js + Tailwind CSS 搭建的个人博客，支持 Markdown 编写、标签分类、全文搜索，部署于 Vercel。"
+    }
+  ],
+  "awards": [
+    {
+      "time": "2025-7",
+      "location": "青岛",
+      "content": "中国大学生高分子材料创新创业大赛国家级奖项",
+      "level": "国家级",
+      "rank": "",
+      "organizer": "",
+      "certificateFileName": "",
+      "note": ""
+    },
+    {
+      "time": "2025-7",
+      "location": "",
+      "content": "全国大学生高分子材料实验实践大赛国家级奖项",
+      "level": "国家级",
+      "rank": "",
+      "organizer": "",
+      "certificateFileName": "",
+      "note": "地点留空用于测试跳过空值"
+    }
+  ],
+  "skills": {
+    "tech": "JavaScript / TypeScript / React / Vue / Node.js / Git",
+    "workplace": "快速学习、团队协作、文档写作",
+    "interests": "开源项目、技术博客、羽毛球",
+    "career_plan": "",
+    "certificates": "CET-6（560分）",
+    "cover_letter": ""
+  },
+  "languages": [
+    {
+      "language": "英语",
+      "certificate": "CET-6",
+      "exam_date": "2022-06",
+      "score": "560",
+      "listening_speaking": "良好",
+      "reading_writing": "优秀"
+    }
+  ],
+  "papers": [],
+  "intro": "示例简介：具备扎实的专业基础和项目实践经验。",
+  "github": "",
+  "homepage": "",
+  "family": ""
+}

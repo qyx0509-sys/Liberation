@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "解放 — 高校申请本地填表",
+  "version": "3.0.3",
+  "description": "本地扫描高校申请栏目，按统一 Resume JSON 填表并安全匹配本机材料",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "解放 · 在当前页面打开本地填表工具",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "minimum_chrome_version": "102",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'self'"
+  }
+}

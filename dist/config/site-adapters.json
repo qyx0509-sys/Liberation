@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 2,
+  "description": "声明式 Site Profile schema 示例入口。默认留空，不虚构任何学校网站 DOM；Profile 只能提供纯数据证据，不能携带或执行代码。运行时唯一配置源是 chrome.storage.local.siteAdapterConfigs，本文件不会被自动加载。",
+  "adapters": []
+}

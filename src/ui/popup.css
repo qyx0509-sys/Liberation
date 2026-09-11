@@ -1,0 +1,90 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+/* Native extension popups size themselves from their content. A 100vw cap here
+   locks that measurement to the initial narrow viewport instead of requesting 420px. */
+html { width: 420px; min-width: 420px; overflow: hidden; }
+/* Keep the document within the native 600px popup height; only main scrolls. */
+body { display: flex; flex-direction: column; width: 420px; min-width: 420px; max-height: 600px; margin: 0; overflow: hidden; background: var(--bg); color: var(--text-primary); font: 13px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft Yahei", sans-serif; }
+button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; padding: 8px 12px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--surface); color: var(--text-primary); font: inherit; cursor: pointer; transition: background 160ms, border-color 160ms; }
+button:hover { background: var(--surface-hover); border-color: var(--brand); }
+button:disabled { opacity: .55; cursor: not-allowed; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+svg { display: block; width: 20px; height: 20px; flex: none; }
+[data-icon] { display: inline-flex; flex: none; }
+.header { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; flex: none; gap: 8px; padding: 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.brand { display: flex; gap: 12px; min-width: 0; align-items: center; }
+.mark { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--brand); color: var(--on-brand); font-size: 22px; font-weight: 700; }
+.brand-copy { min-width: 0; }
+.brand-line { display: flex; align-items: center; gap: 12px; }
+h1 { margin: 0; font-size: 18px; line-height: 1.4; }
+h2 { margin: 0; font-size: 14px; line-height: 1.5; font-weight: 650; }
+p { margin: 0; }
+.subtitle { margin-top: 2px; color: var(--text-secondary); font-size: 11px; }
+.badge { display: inline-flex; align-items: center; gap: 5px; color: var(--text-secondary); font-size: 11px; white-space: nowrap; }
+.badge::before { width: 6px; height: 6px; border-radius: 50%; background: currentColor; content: ""; }
+.badge.success { color: var(--success); }
+.badge.warning, .badge.warning-strong { color: var(--warning); }
+.badge.danger { color: var(--danger); }
+.badge.info { color: var(--brand); }
+.icon-button { flex: none; width: 36px; padding: 8px; border-color: transparent; background: transparent; color: var(--text-secondary); }
+main { flex: 1 1 auto; min-height: 0; padding: 12px 16px 0; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; }
+.current-page { position: relative; display: flex; align-items: flex-start; gap: 12px; padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.page-icon { padding-top: 4px; color: var(--brand); }
+.page-copy { min-width: 0; flex: 1; }
+.page-copy h2 { overflow-wrap: anywhere; padding-right: 26px; }
+.eyebrow { color: var(--text-secondary); font-size: 11px; }
+.system-section { margin-top: 2px; color: var(--text-secondary); font-size: 12px; }
+.system-meta { margin-top: 4px; color: var(--text-secondary); font-size: 11px; }
+.scan-badge { position: absolute; top: 12px; right: 10px; color: var(--text-secondary); font-size: 10px; }
+.readiness { padding: 14px 0 12px; border-bottom: 1px solid var(--border); }
+.readiness.compact .profile, .readiness.compact .coverage-progress, .readiness.compact .help, .readiness.compact .stats { display: none; }
+.section-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.coverage-label { color: var(--text-secondary); font-size: 11px; }
+.profile { margin-top: 2px; overflow: hidden; color: var(--text-secondary); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.progress { height: 6px; overflow: hidden; border-radius: 8px; background: var(--border); }
+.progress i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--brand); }
+.coverage-progress { margin: 8px 0 4px; }
+.help { color: var(--text-secondary); font-size: 11px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 10px; }
+.stat { text-align: center; }
+.stat + .stat { border-left: 1px solid var(--border); }
+.stat b { font-size: 18px; line-height: 1.2; font-weight: 650; }
+.stat span { display: block; margin-top: 2px; color: var(--text-secondary); font-size: 11px; }
+.task-summary { padding: 10px 0 12px; }
+#task-progress { color: var(--text-secondary); font-size: 11px; }
+.task-summary .progress { margin: 6px 0; }
+.task-section { overflow: hidden; color: var(--text-secondary); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.task-note { margin-top: 2px; color: var(--text-secondary); font-size: 11px; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.actions .primary { grid-column: 1 / -1; min-height: 42px; color: var(--on-brand); border-color: var(--brand); background: var(--brand); font-size: 14px; font-weight: 650; }
+.actions .primary:hover { background: var(--brand-hover); }
+.actions .danger { color: var(--danger); }
+.review-summary { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
+.review-count { color: var(--text-secondary); font-size: 11px; }
+.empty { padding: 12px 0; color: var(--text-secondary); font-size: 12px; }
+.review-item { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.review-item-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.review-field { font-size: 12px; overflow-wrap: anywhere; }
+.review-item p { margin-top: 2px; color: var(--text-secondary); font-size: 11px; overflow-wrap: anywhere; }
+.review-status { flex: none; border-radius: 6px; padding: 1px 6px; color: var(--text-secondary); background: var(--surface-soft); font-size: 10px; }
+.review-status.warning, .review-status.warning-strong { color: var(--warning); background: var(--warning-soft); }
+.review-status.danger { color: var(--danger); background: var(--danger-soft); }
+.review-status.neutral-info { color: var(--info); background: var(--info-soft); }
+.text-button { min-height: 36px; padding: 4px 0; color: var(--brand); border: none; background: transparent; font-size: 12px; }
+.text-button:hover { background: transparent; text-decoration: underline; }
+.review-all { display: flex; width: 100%; }
+.status { padding: 0 0 10px; color: var(--text-secondary); font-size: 11px; overflow-wrap: anywhere; }
+.status:empty { display: none; }
+.status.error { color: var(--danger); }
+.status.ok { color: var(--text-secondary); }
+.diagnosis-note { margin: 12px 0; padding: 8px; border-radius: 8px; background: var(--surface-soft); color: var(--text-secondary); font-size: 11px; }
+.footer { display: flex; justify-content: center; align-items: center; gap: 6px; flex: none; min-height: 36px; padding: 8px 16px; border-top: 1px solid var(--border); color: var(--text-secondary); background: var(--surface); font-size: 11px; }
+.footer svg { width: 16px; height: 16px; }
+.advanced-menu { position: absolute; top: 60px; right: 12px; z-index: 6; width: 222px; padding: 6px; max-height: min(520px, calc(100vh - 72px)); overflow: auto; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow-floating); }
+.menu-label { padding: 8px 10px; font-size: 11px; color: var(--text-secondary); }
+.advanced-menu button { justify-content: flex-start; width: 100%; gap: 10px; padding: 8px 10px; border-color: transparent; border-radius: 6px; font-size: 12px; }
+.menu-divider { height: 1px; margin: 6px 4px; background: var(--border); }
+dialog { width: calc(100% - 32px); max-width: 380px; padding: 20px; border: 1px solid var(--border); border-radius: 16px; color: var(--text-primary); background: var(--surface); box-shadow: var(--shadow-modal); }
+dialog::backdrop { background: var(--overlay); }
+dialog p { margin-top: 12px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }

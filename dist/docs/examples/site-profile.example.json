@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "id": "example-graduate-application",
+  "revision": "2026-08-24.1",
+  "enabled": true,
+  "priority": 20,
+  "match": {
+    "origins": [
+      "https://apply.example.invalid"
+    ],
+    "urlPrefixes": [
+      "https://apply.example.invalid/application/"
+    ],
+    "urlPatterns": []
+  },
+  "navigation": {
+    "selectors": [
+      "#verified-sidebar a"
+    ],
+    "minimumConfidence": 0.78,
+    "sectionAliases": {
+      "awards": [
+        "示例荣誉"
+      ]
+    }
+  },
+  "contentRoot": "#verified-form-root",
+  "sections": {
+    "awards": {
+      "root": "#verified-awards-panel",
+      "groupSelector": ".verified-award-row",
+      "addButtonSelector": "button.verified-add-award"
+    }
+  },
+  "fieldAliases": {
+    "basic.name": [
+      "示例姓名"
+    ]
+  },
+  "optionAliases": {
+    "basic.gender": {
+      "男": [
+        "示例男"
+      ],
+      "女": [
+        "示例女"
+      ]
+    }
+  },
+  "save": {
+    "selectors": [
+      "button[data-action=\"save-draft\"]"
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "profileName": "默认申请资料",
+  "basic": {
+    "name": "示例同学",
+    "namePinyin": "SHILI TONGXUE",
+    "healthStatus": "健康",
+    "gender": "男",
+    "birthday": "",
+    "idType": "居民身份证",
+    "idNumber": "",
+    "political": "中国共产党预备党员",
+    "ethnicity": "汉族",
+    "nationality": "中国",
+    "hometown": "",
+    "birthplaceRegion": "",
+    "hometownRegion": "",
+    "householdRegion": "",
+    "marital": "未婚",
+    "militaryStatus": "非现役军人",
+    "householdAddress": ""
+  },
+  "contact": {
+    "phone": "",
+    "landline": "",
+    "email": "",
+    "address": "",
+    "currentCity": "",
+    "postcode": "",
+    "archiveOrganization": "",
+    "archiveRegion": "",
+    "archiveAddress": "",
+    "archivePostcode": "",
+    "emergencyPhone": ""
+  },
+  "family": [
+    {
+      "name": "示例家庭成员",
+      "relationship": "父亲",
+      "employer": "示例单位",
+      "position": "示例职务",
+      "phone": "",
+      "political": "",
+      "description": "示例家庭成员资料，不对应任何真实个人。"
+    }
+  ],
+  "education": [
+    {
+      "school": "示例大学",
+      "college": "示例学院",
+      "major": "材料科学与工程",
+      "degree": "学士",
+      "educationLevel": "本科",
+      "startDate": "2022-09",
+      "endDate": "2026-06",
+      "studentId": "",
+      "gpa": "",
+      "rank": ""
+    }
+  ],
+  "awards": [
+    {
+      "name": "中国大学生高分子材料创新创业大赛国家级奖项",
+      "date": "2025-07",
+      "time": "2025-7",
+      "location": "青岛",
+      "content": "中国大学生高分子材料创新创业大赛国家级奖项",
+      "category": "竞赛获奖",
+      "level": "国家级",
+      "rank": "",
+      "organizer": "示例竞赛组委会",
+      "attachments": []
+    },
+    {
+      "name": "全国大学生高分子材料实验实践大赛国家级奖项",
+      "date": "2025-07",
+      "time": "2025-7",
+      "location": "",
+      "content": "全国大学生高分子材料实验实践大赛国家级奖项",
+      "category": "竞赛获奖",
+      "level": "国家级",
+      "rank": "",
+      "organizer": "",
+      "attachments": []
+    }
+  ],
+  "research": [
+    {
+      "name": "示例科研训练项目",
+      "organization": "示例实验室",
+      "role": "成员",
+      "startDate": "2024-09",
+      "endDate": "2025-06",
+      "description": "示例描述，不对应任何真实个人。",
+      "attachments": []
+    }
+  ],
+  "projects": [],
+  "papers": [],
+  "patents": [],
+  "practice": [],
+  "internships": [
+    {
+      "company": "示例实习单位",
+      "position": "示例岗位",
+      "startDate": "2024-07",
+      "endDate": "2024-08",
+      "location": "",
+      "description": "示例实习描述，不对应任何真实经历。",
+      "attachments": []
+    }
+  ],
+  "student_work": [],
+  "certificates": [],
+  "language": [
+    {
+      "language": "英语",
+      "certificate": "CET-6",
+      "score": "",
+      "examDate": ""
+    }
+  ],
+  "skills": {
+    "tech": "示例技能",
+    "computer": "",
+    "workplace": "",
+    "interests": ""
+  },
+  "application": {
+    "disciplinaryHistory": "",
+    "personalStatement": "",
+    "notes": ""
+  },
+  "files": {
+    "photo": "",
+    "resume": "",
+    "transcript": "",
+    "language_certificate": ""
+  }
+}

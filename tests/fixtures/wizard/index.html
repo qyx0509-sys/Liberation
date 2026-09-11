@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>高校研究生申请系统（本地多栏目测试）</title>
+  <link rel="stylesheet" href="wizard.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <strong>高校研究生申请系统</strong>
+      <small>解放扩展本地 SPA 测试夹具</small>
+    </div>
+    <label class="unrelated">站内检索 <input id="site-search" value="不得改写"></label>
+  </header>
+
+  <div class="application-shell">
+    <nav class="wizard-nav" role="navigation" aria-label="申请栏目导航">
+      <div role="tab" tabindex="0" data-section="basic" data-fixture-section="basic" aria-selected="true">基本信息</div>
+      <div role="tab" tabindex="0" data-section="education" data-fixture-section="education" aria-selected="false">学习信息</div>
+      <div role="tab" tabindex="0" data-section="awards" data-fixture-section="awards" aria-selected="false">奖励或处分</div>
+      <div role="tab" tabindex="0" data-section="research" data-fixture-section="research" aria-selected="false">科研成果</div>
+    </nav>
+
+    <main id="wizard-main">
+      <p class="breadcrumb" id="breadcrumb">申请信息 / 基本信息</p>
+
+      <section class="wizard-section" id="section-basic" data-section="basic">
+        <h1>基本信息</h1>
+        <div class="form-grid">
+          <div class="form-item">
+            <label for="applicant-name">姓名</label>
+            <input id="applicant-name" name="opaque_basic_1" autocomplete="off">
+          </div>
+          <div class="form-item">
+            <label for="applicant-phone">手机号码</label>
+            <input id="applicant-phone" name="opaque_basic_2" inputmode="tel" autocomplete="off">
+          </div>
+          <div class="form-item">
+            <label for="applicant-birthday">出生日期</label>
+            <input id="applicant-birthday" name="opaque_basic_3" type="date">
+          </div>
+          <fieldset class="form-item choice-item">
+            <legend>性别</legend>
+            <label><input id="gender-male" type="radio" name="opaque_gender" value="男"> 男</label>
+            <label><input id="gender-female" type="radio" name="opaque_gender" value="女"> 女</label>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="wizard-section" id="section-education" data-section="education" hidden>
+        <h1>学习信息</h1>
+        <div class="form-grid">
+          <div class="form-item">
+            <label for="education-school">学校名称</label>
+            <input id="education-school" name="opaque_education_1" autocomplete="off">
+          </div>
+          <div class="form-item">
+            <label for="education-major">所学专业</label>
+            <input id="education-major" name="opaque_education_2" autocomplete="off">
+          </div>
+          <div class="form-item">
+            <label for="education-level">学历层次</label>
+            <select id="education-level" name="opaque_education_3">
+              <option value="">请选择</option>
+              <option value="本科">本科</option>
+              <option value="硕士">硕士</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="wizard-section" id="section-awards" data-section="awards" hidden>
+        <h1>奖励情况（本科期间）</h1>
+        <p class="hint">数组栏目初始只有一条记录；扩展不得删除已有记录。</p>
+        <div id="award-list" data-repeat-list></div>
+        <button id="add-award" type="button">新增奖励</button>
+      </section>
+
+      <section class="wizard-section" id="section-research" data-section="research" hidden>
+        <h1>科研成果</h1>
+        <div class="form-grid">
+          <div class="form-item">
+            <label for="research-name">科研项目名称</label>
+            <input id="research-name" name="opaque_research_1" autocomplete="off">
+          </div>
+          <div class="form-item upload-field">
+            <label for="research-file">科研证明</label>
+            <p>仅允许 PDF，文件大小不超过 1 MB，只能上传 1 个文件。</p>
+            <input id="research-file" name="opaque_research_file" type="file" accept=".pdf,application/pdf">
+          </div>
+        </div>
+      </section>
+
+      <output id="fixture-status" aria-live="polite">夹具初始化中</output>
+
+      <div class="page-actions">
+        <button id="previous" type="button">上一步</button>
+        <button id="safe-save" type="button">保存本页</button>
+        <button id="save-next" type="button">保存并下一步</button>
+        <button id="next" type="button">下一步</button>
+        <form id="submit-form" action="/formal-submit" method="post">
+          <button id="final-submit" type="submit">正式提交</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="wizard-fixture.js"></script>
+</body>
+</html>

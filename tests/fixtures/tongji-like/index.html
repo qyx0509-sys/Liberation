@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>研究生报考服务系统</title>
+  <link rel="stylesheet" href="tongji-like.css">
+</head>
+<body>
+  <header class="portal-head">
+    <strong>研究生报考服务系统</strong>
+    <span>脱敏 DOM 回归夹具</span>
+  </header>
+
+  <!--
+    真实旧站点常把侧栏和所有栏目都包进同一个大 form。这里故意把未知类名的
+    table 导航放在 form 内，并混用 javascript:、onclick、button 与无 href 链接。
+  -->
+  <form class="portal-shell" id="legacy-application-form" action="#" autocomplete="off">
+    <div class="portal-rail" id="portal-rail">
+      <table class="stage-list">
+        <tbody>
+          <tr data-nav-row><td><a data-route="#notice">申请须知</a></td></tr>
+          <tr class="active" data-nav-row><td><a href="javascript:void(0)" data-route="#basic" data-fixture-section="basic">基本信息</a></td></tr>
+          <tr data-nav-row><td><button type="button" data-section="family" data-route="#family" data-fixture-section="family">家庭主要成员</button></td></tr>
+          <tr data-nav-row><td><a onclick="showPage('education'); return false" data-route="#education" data-fixture-section="education">学习信息</a></td></tr>
+          <tr data-nav-row><td><a data-route="#language" data-fixture-section="language">外语水平</a></td></tr>
+          <tr data-nav-row><td><a data-route="#skills" data-fixture-section="skills">计算机水平</a></td></tr>
+          <tr data-nav-row><td><a data-route="#internship" data-fixture-section="internship">学习和工作经历</a></td></tr>
+          <tr data-nav-row><td><a data-route="#research" data-fixture-section="research">学术成果</a></td></tr>
+          <tr data-nav-row><td><a data-route="#awards" data-fixture-section="awards">奖励或处分（本科期间）</a></td></tr>
+          <tr data-nav-row><td><a data-route="#application" data-fixture-section="application">申请信息</a></td></tr>
+          <tr data-nav-row><td><a data-route="#recommenders" data-fixture-section="recommenders">推荐人信息维护</a></td></tr>
+          <tr data-nav-row><td><a data-route="#upload-photo" data-fixture-section="upload_photo">上传照片</a></td></tr>
+          <tr data-nav-row><td><a data-route="#upload-materials" data-fixture-section="upload_materials">上传材料</a></td></tr>
+          <tr data-nav-row><td><button type="submit" id="formal-submit-link">申请信息提交</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <main id="application-content">
+      <div class="crumb">首页 &gt; 填写/修改申请信息</div>
+
+      <!-- 标题故意不用 h1/h2/.title，当前栏目应由活动导航和真实字段确定。 -->
+      <section class="portal-section" id="section-basic" data-section="basic">
+        <div class="section-caption">基本信息</div>
+        <table class="data-grid">
+          <tbody>
+            <tr>
+              <td class="prompt-cell">姓名<span aria-hidden="true">*</span></td>
+              <td><input id="xm" name="xm" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">姓名拼音<span aria-hidden="true">*</span></td>
+              <td><input id="xmpy" name="xmpy" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">民族<span aria-hidden="true">*</span></td>
+              <td>
+                <select id="mz" name="mzm">
+                  <option value="">----请选择----</option>
+                  <option value="01">汉族</option>
+                  <option value="99">其他</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">婚否<span aria-hidden="true">*</span></td>
+              <td>
+                <select id="hfm" name="hfm">
+                  <option value="">----请选择----</option>
+                  <option value="0">未婚</option>
+                  <option value="1">已婚</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">政治面貌<span aria-hidden="true">*</span></td>
+              <td>
+                <select id="zzmmm" name="zzmmm">
+                  <option value="">----请选择----</option>
+                  <option value="群众">群众</option>
+                  <option value="党员">中共党员</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">通讯地址<span aria-hidden="true">*</span></td>
+              <td><input id="txdz" name="txdz" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">移动电话<span aria-hidden="true">*</span></td>
+              <td><input id="yddh" name="yddh" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">考生电子邮箱<span aria-hidden="true">*</span></td>
+              <td><input id="dzxx" name="dzxx" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">备用信息</td>
+              <td><input id="byxx1" name="byxx1" autocomplete="off"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 家庭栏目只有一行，点击新增后异步追加；用表头建立列语义。 -->
+      <section class="portal-section" id="section-family" data-section="family" hidden>
+        <div class="section-caption">家庭主要成员</div>
+        <table class="data-grid repeated-grid" id="family-grid">
+          <thead>
+            <tr>
+              <th>姓名</th>
+              <th>关系</th>
+              <th>在何单位工作任何职务</th>
+              <th>联系电话</th>
+            </tr>
+          </thead>
+          <tbody id="family-body"></tbody>
+        </table>
+        <button type="button" id="add-family-row">新增一行</button>
+      </section>
+
+      <!-- 学习信息是固定单条视图，不提供新增按钮。学校/专业是复合选择器。 -->
+      <section class="portal-section" id="section-education" data-section="education" hidden>
+        <div class="section-caption">学习信息</div>
+        <table class="data-grid">
+          <tbody>
+            <tr>
+              <td class="prompt-cell">所在学校<span aria-hidden="true">*</span></td>
+              <td class="compound-control">
+                <input id="education-school" name="school" autocomplete="off">
+                <button type="button" data-picker="school">选择学校</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">所在院系<span aria-hidden="true">*</span></td>
+              <td><input id="education-college" name="college" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">所在专业<span aria-hidden="true">*</span></td>
+              <td class="compound-control">
+                <input id="education-major" name="major" autocomplete="off">
+                <button type="button" data-picker="major">选择专业</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">入学年月<span aria-hidden="true">*</span></td>
+              <td><input id="education-enrollment" name="enrollmentDate" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">预计毕业年月<span aria-hidden="true">*</span></td>
+              <td><input id="education-graduation" name="graduationDate" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">在校生注册学号</td>
+              <td><input id="education-student-id" name="studentId" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">成绩绩点/总绩点<span aria-hidden="true">*</span></td>
+              <td><input id="education-gpa" name="gpa" value="3.8/5" autocomplete="off"></td>
+            </tr>
+            <tr>
+              <td class="prompt-cell">百分制成绩<span aria-hidden="true">*</span></td>
+              <td><input id="education-percentage" name="percentageScore" value="76.00" autocomplete="off"></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="portal-section" id="section-placeholder" data-section="placeholder" hidden>
+        <div class="section-caption" id="placeholder-caption">其他栏目</div>
+        <p>这里只验证栏目切换，不包含用户资料。</p>
+      </section>
+
+      <output id="fixture-status" aria-live="polite">夹具初始化中</output>
+    </main>
+  </form>
+
+  <script src="tongji-like-fixture.js"></script>
+</body>
+</html>

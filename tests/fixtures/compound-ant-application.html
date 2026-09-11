@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <title>通用复合申请表夹具</title>
+  <link rel="stylesheet" href="compound-ant-application.css">
+</head>
+<body>
+  <main>
+    <h1>基本信息</h1>
+    <form id="application-form" action="./compound-ant-application.html" method="post">
+      <fieldset id="application-shell">
+        <legend>申请资料</legend>
+
+        <div id="outer-generic-copy" class="application-summary" aria-label="申请说明">
+          <span>请按实际时间填写相关内容。</span>
+          <span>部分经历需要填写级别与排名。</span>
+        </div>
+
+        <section class="ant-form-section" aria-labelledby="basic-heading">
+          <h2 id="basic-heading">基本信息</h2>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="name">姓名</label></div><div class="ant-form-item-control"><input id="name" type="text" placeholder="请输入姓名"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="name-pinyin">姓名拼音</label></div><div class="ant-form-item-control"><input id="name-pinyin" type="text" placeholder="请输入姓名拼音"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="id-type-label" for="id-type-input">证件类型</label></div><div class="ant-form-item-control"><div id="id-type" class="ant-select-selector" role="combobox" tabindex="0" aria-expanded="false" aria-controls="id-type-listbox" aria-labelledby="id-type-label" data-ant-select="true"><span class="ant-select-selection-search"><input id="id-type-input" class="ant-select-selection-search-input" type="text" readonly aria-labelledby="id-type-label"><input id="id-type-mirror-input" class="ant-select-selection-mirror-input" type="text" aria-hidden="true" tabindex="-1"></span><span class="ant-select-selection-item"></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><span>证件号码</span></div><div class="ant-form-item-control"><input id="id-number" type="text" placeholder="请输入证件号码"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="gender-label" for="gender-input">性别</label></div><div class="ant-form-item-control"><div id="gender" class="ant-select-selector" role="combobox" tabindex="0" aria-expanded="false" aria-controls="gender-listbox" aria-labelledby="gender-label" data-ant-select="true"><span class="ant-select-selection-search"><input id="gender-input" class="ant-select-selection-search-input" type="text" readonly aria-labelledby="gender-label"><input id="gender-mirror-input" class="ant-select-selection-mirror-input" type="text" aria-hidden="true" tabindex="-1"></span><span class="ant-select-selection-item"></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="political-label" for="political-input">政治面貌</label></div><div class="ant-form-item-control"><div id="political" class="ant-select-selector" role="combobox" tabindex="0" aria-expanded="false" aria-controls="political-listbox" aria-labelledby="political-label" data-ant-select="true"><span class="ant-select-selection-search"><input id="political-input" class="ant-select-selection-search-input" type="text" readonly aria-labelledby="political-label"><input id="political-mirror-input" class="ant-select-selection-mirror-input" type="text" aria-hidden="true" tabindex="-1"></span><span class="ant-select-selection-item"></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="birthday">出生日期</label></div><div class="ant-form-item-control ant-picker"><input id="birthday" type="text" readonly placeholder="请选择出生日期" data-calendar-transition="legacy-overlap"><button class="ant-picker-suffix calendar-trigger" type="button" aria-label="选择出生日期" aria-controls="birthday-panel">日历</button></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="ethnicity-label" for="ethnicity-input">民族</label></div><div class="ant-form-item-control"><div id="ethnicity" class="ant-select-selector" role="combobox" tabindex="0" aria-expanded="false" aria-controls="ethnicity-listbox" aria-labelledby="ethnicity-label" data-ant-select="true"><span class="ant-select-selection-search"><input id="ethnicity-input" class="ant-select-selection-search-input" type="text" readonly aria-labelledby="ethnicity-label"><input id="ethnicity-mirror-input" class="ant-select-selection-mirror-input" type="text" aria-hidden="true" tabindex="-1"></span><span class="ant-select-selection-item"></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="marital-label" for="marital-input">婚姻状况</label></div><div class="ant-form-item-control"><div id="marital" class="ant-select-selector" role="combobox" tabindex="0" aria-expanded="false" aria-controls="marital-listbox" aria-labelledby="marital-label" data-ant-select="true"><span class="ant-select-selection-search"><input id="marital-input" class="ant-select-selection-search-input" type="text" readonly aria-labelledby="marital-label"><input id="marital-mirror-input" class="ant-select-selection-mirror-input" type="text" aria-hidden="true" tabindex="-1"></span><span class="ant-select-selection-item"></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="hometown-cascader-label" for="hometown-cascader-input">籍贯地区（级联）</label></div><div class="ant-form-item-control"><div id="hometown-cascader" class="ant-cascader-picker" role="combobox" aria-controls="hometown-cascader-panel" aria-labelledby="hometown-cascader-label" aria-expanded="false" data-cascader-root><input id="hometown-cascader-input" class="ant-input ant-cascader-input" type="text" readonly placeholder="请选择籍贯省/市/区" aria-haspopup="menu" aria-controls="hometown-cascader-panel"><span class="ant-cascader-picker-label" data-cascader-selected-item></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="birthplace-region-cascader-label" for="birthplace-region-cascader-input">出生地</label></div><div class="ant-form-item-control"><div id="birthplace-region-cascader" class="ant-cascader-picker" role="combobox" aria-controls="birthplace-region-cascader-panel" aria-labelledby="birthplace-region-cascader-label" aria-expanded="false" data-cascader-root><input id="birthplace-region-cascader-input" class="ant-input ant-cascader-input" type="text" readonly placeholder="请选择出生省/市/区" aria-haspopup="menu" aria-controls="birthplace-region-cascader-panel"><span class="ant-cascader-picker-label" data-cascader-selected-item></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="household-region-cascader-label" for="household-region-cascader-input">户口所在地</label></div><div class="ant-form-item-control"><div id="household-region-cascader" class="ant-cascader-picker" role="combobox" aria-controls="household-region-cascader-panel" aria-labelledby="household-region-cascader-label" aria-expanded="false" data-cascader-root><input id="household-region-cascader-input" class="ant-input ant-cascader-input" type="text" readonly placeholder="请选择户口省/市/区" aria-haspopup="menu" aria-controls="household-region-cascader-panel"><span class="ant-cascader-picker-label" data-cascader-selected-item></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label id="archive-region-cascader-label" for="archive-region-cascader-input">档案所在地</label></div><div class="ant-form-item-control"><div id="archive-region-cascader" class="ant-cascader-picker" role="combobox" aria-controls="archive-region-cascader-panel" aria-labelledby="archive-region-cascader-label" aria-expanded="false" data-cascader-root><input id="archive-region-cascader-input" class="ant-input ant-cascader-input" type="text" readonly placeholder="请选择档案省/市/区" aria-haspopup="menu" aria-controls="archive-region-cascader-panel"><span class="ant-cascader-picker-label" data-cascader-selected-item></span></div></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="address">通讯地址</label></div><div class="ant-form-item-control"><input id="address" type="text" placeholder="请输入通讯地址"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="phone">移动电话</label></div><div class="ant-form-item-control"><input id="phone" type="tel" placeholder="请输入移动电话"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="email">电子邮箱</label></div><div class="ant-form-item-control"><input id="email" type="email" placeholder="请输入电子邮箱"></div></div>
+        </section>
+
+        <section aria-labelledby="family-heading">
+          <h2 id="family-heading">家庭主要成员及主要社会关系</h2>
+          <table id="family-table">
+            <thead><tr><th>姓名</th><th>与本人关系</th><th>在何单位工作任何职务</th><th>联系电话</th></tr></thead>
+            <tbody>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section aria-labelledby="work-heading">
+          <h2 id="work-heading">学习和工作经历</h2>
+          <table id="work-history-table">
+            <thead><tr><th>起止年月</th><th>学习或工作单位</th><th>任何职务</th></tr></thead>
+            <tbody>
+              <tr><td><input type="text"><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+              <tr><td><input type="text"><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="ant-form-section" aria-labelledby="education-heading">
+          <h2 id="education-heading">教育信息</h2>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="college">本科院系</label></div><div class="ant-form-item-control"><input id="college" type="text"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="cet4">大学英语四级成绩</label></div><div class="ant-form-item-control"><input id="cet4" type="text"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="enrollment">入学时间</label></div><div class="ant-form-item-control ant-picker"><input id="enrollment" type="text" readonly placeholder="请选择入学时间" data-calendar-transition="modern-replacement"><button class="ant-picker-suffix calendar-trigger" type="button" aria-label="选择入学时间" aria-controls="enrollment-panel">日历</button></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="graduation">毕业时间</label></div><div class="ant-form-item-control ant-picker"><input id="graduation" type="text" readonly placeholder="请选择毕业时间" data-calendar-transition="modern-overlap"><button class="ant-picker-suffix calendar-trigger" type="button" aria-label="选择毕业时间" aria-controls="graduation-panel">日历</button></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="gpa">GPA</label></div><div class="ant-form-item-control"><input id="gpa" type="text"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="rank-total">专业人数</label></div><div class="ant-form-item-control"><input id="rank-total" type="number"></div></div>
+          <div class="ant-form-item"><div class="ant-form-item-label"><label for="rank">专业排名</label></div><div class="ant-form-item-control"><input id="rank" type="number"></div></div>
+        </section>
+
+        <section aria-labelledby="papers-heading">
+          <h2 id="papers-heading">论文成果</h2>
+          <table id="papers-table">
+            <thead><tr><th>时间</th><th>成果名称</th><th>期刊类型</th><th>期刊名称</th><th>发表状态</th><th>作者排名</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <button id="add-paper" type="button">添加一行</button>
+        </section>
+
+        <section aria-labelledby="competition-awards-heading">
+          <h2 id="competition-awards-heading">竞赛获奖</h2>
+          <table id="competition-awards-table">
+            <thead><tr><th>竞赛级别</th><th>获奖等级</th><th>获奖名称</th><th>个人/团队</th><th>个人排名</th><th>操作</th></tr></thead>
+            <tbody>
+              <tr data-award-row><td><select aria-label="竞赛级别"><option value="">请选择</option><option>国家级</option><option>省级</option><option>校级</option></select></td><td><select aria-label="获奖等级"><option value="">请选择</option><option>一等奖</option><option>二等奖</option><option>三等奖</option></select></td><td><input type="text" aria-label="获奖名称"></td><td><select aria-label="个人/团队"><option value="">请选择</option><option>个人</option><option>团队</option></select></td><td><input type="text" aria-label="个人排名"></td><td><button class="delete-award" type="button">删除</button></td></tr>
+              <tr data-award-row><td><select aria-label="竞赛级别"><option value="">请选择</option><option>国家级</option><option>省级</option><option>校级</option></select></td><td><select aria-label="获奖等级"><option value="">请选择</option><option>一等奖</option><option>二等奖</option><option>三等奖</option></select></td><td><input type="text" aria-label="获奖名称"></td><td><select aria-label="个人/团队"><option value="">请选择</option><option>个人</option><option>团队</option></select></td><td><input type="text" aria-label="个人排名"></td><td><button class="delete-award" type="button">删除</button></td></tr>
+            </tbody>
+          </table>
+          <button id="add-competition-award" type="button">添加奖项</button>
+        </section>
+
+        <section aria-labelledby="materials-heading">
+          <h2 id="materials-heading">上传材料</h2>
+          <label>申请照片 <input type="file" accept="image/png,image/jpeg"></label>
+          <label>身份材料 <input type="file" accept="image/png,image/jpeg"></label>
+        </section>
+      </fieldset>
+
+      <footer class="form-actions">
+        <button id="draft" type="button">暂存</button>
+        <button id="next-step" type="button" aria-label="Next">下一步</button>
+        <button id="final-submit" type="submit">提交申请</button>
+      </footer>
+    </form>
+
+    <div id="id-type-listbox" class="ant-select-dropdown" role="listbox" hidden><div role="option" data-value="居民身份证">居民身份证</div><div role="option" data-value="护照">护照</div></div>
+    <div id="gender-listbox" class="ant-select-dropdown" role="listbox" hidden><div role="option" data-value="男">男</div><div role="option" data-value="女">女</div></div>
+    <div id="political-listbox" class="ant-select-dropdown" role="listbox" hidden><div role="option" data-value="群众">群众</div><div role="option" data-value="中国共产党党员">中国共产党党员</div></div>
+    <div id="ethnicity-listbox" class="ant-select-dropdown" role="listbox" hidden><div role="option" data-value="汉族">汉族</div><div role="option" data-value="回族">回族</div></div>
+    <div id="marital-listbox" class="ant-select-dropdown" role="listbox" hidden><div role="option" data-value="未婚">未婚</div><div role="option" data-value="已婚">已婚</div></div>
+
+    <div id="hometown-cascader-panel" class="ant-cascader-menus" role="menu" aria-label="籍贯地区选项" hidden>
+      <ul id="hometown-cascader-panel-level-0" class="ant-cascader-menu" data-cascader-level="0"><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="山东省"><span class="ant-cascader-menu-item-content">山东省</span></li><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="浙江省"><span class="ant-cascader-menu-item-content">浙江省</span></li></ul>
+    </div>
+    <div id="birthplace-region-cascader-panel" class="ant-cascader-menus" role="menu" aria-label="出生地选项" hidden>
+      <ul id="birthplace-region-cascader-panel-level-0" class="ant-cascader-menu" data-cascader-level="0"><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="浙江省"><span class="ant-cascader-menu-item-content">浙江省</span></li><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="江苏省"><span class="ant-cascader-menu-item-content">江苏省</span></li></ul>
+    </div>
+    <div id="household-region-cascader-panel" class="ant-cascader-menus" role="menu" aria-label="户口所在地选项" hidden>
+      <ul id="household-region-cascader-panel-level-0" class="ant-cascader-menu" data-cascader-level="0"><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="江苏省"><span class="ant-cascader-menu-item-content">江苏省</span></li><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="山东省"><span class="ant-cascader-menu-item-content">山东省</span></li></ul>
+    </div>
+    <div id="archive-region-cascader-panel" class="ant-cascader-menus" role="menu" aria-label="档案所在地选项" hidden>
+      <ul id="archive-region-cascader-panel-level-0" class="ant-cascader-menu" data-cascader-level="0"><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="山东省"><span class="ant-cascader-menu-item-content">山东省</span></li><li class="ant-cascader-menu-item" role="menuitem" data-cascader-option data-cascader-level="0" data-value="江苏省"><span class="ant-cascader-menu-item-content">江苏省</span></li></ul>
+    </div>
+
+    <div id="birthday-panel" class="ant-calendar-picker-container ant-picker-dropdown date-picker-panel" role="dialog" aria-label="出生日期面板" data-calendar-mode="DAY" data-calendar-year="2000" data-calendar-month="1" hidden>
+      <div class="ant-calendar"><div class="ant-calendar-panel"><div class="ant-calendar-date-panel" data-calendar-input="birthday" data-calendar-mode="DAY" data-calendar-year="2000" data-calendar-month="1">
+        <header class="ant-calendar-header calendar-header">
+          <button type="button" data-calendar-nav="previous-year" aria-label="上一年">上一年</button>
+          <a class="ant-calendar-year-select" aria-label="选择年份" href="#">2000年</a>
+          <strong data-calendar-year-label>2000年</strong>
+          <a class="ant-calendar-month-select" data-calendar-label aria-label="选择月份" href="#">1月</a>
+          <button type="button" data-calendar-nav="next-year" aria-label="下一年">下一年</button>
+        </header>
+        <div class="ant-calendar-body calendar-grid" role="grid" data-calendar-grid></div>
+      </div></div></div>
+    </div>
+    <div id="enrollment-panel" class="ant-calendar-picker-container ant-picker-dropdown date-picker-panel" role="dialog" aria-label="入学时间面板" data-calendar-mode="DAY" data-calendar-year="2021" data-calendar-month="8" hidden>
+      <div class="ant-calendar"><div class="ant-calendar-panel"><div class="ant-calendar-date-panel" data-calendar-input="enrollment" data-calendar-mode="DAY" data-calendar-year="2021" data-calendar-month="8">
+        <header class="ant-calendar-header calendar-header">
+          <button type="button" data-calendar-nav="previous-year" aria-label="上一年">上一年</button>
+          <strong data-calendar-year-label>2021年</strong>
+          <button type="button" class="ant-calendar-month-select ant-picker-month-btn" data-calendar-mode-switch="MONTH" data-calendar-label aria-label="选择月份">8月</button>
+          <button type="button" data-calendar-nav="next-year" aria-label="下一年">下一年</button>
+        </header>
+        <div class="ant-calendar-body calendar-grid" role="grid" data-calendar-grid></div>
+      </div></div></div>
+    </div>
+    <div id="graduation-panel" class="ant-calendar-picker-container ant-picker-dropdown date-picker-panel" role="dialog" aria-label="毕业时间面板" data-calendar-mode="DAY" data-calendar-year="2025" data-calendar-month="8" hidden>
+      <div class="ant-calendar"><div class="ant-calendar-panel"><div class="ant-calendar-date-panel" data-calendar-input="graduation" data-calendar-mode="DAY" data-calendar-year="2025" data-calendar-month="8">
+        <header class="ant-calendar-header calendar-header">
+          <button type="button" data-calendar-nav="previous-year" aria-label="上一年">上一年</button>
+          <strong data-calendar-year-label>2025年</strong>
+          <button type="button" class="ant-calendar-month-select ant-picker-month-btn" data-calendar-mode-switch="MONTH" data-calendar-label aria-label="选择月份">8月</button>
+          <button type="button" data-calendar-nav="next-year" aria-label="下一年">下一年</button>
+        </header>
+        <div class="ant-calendar-body calendar-grid" role="grid" data-calendar-grid></div>
+      </div></div></div>
+    </div>
+    <div id="image-viewer" role="dialog" aria-label="图片预览" hidden><button type="button">Previous</button><button type="button">Next</button></div>
+  </main>
+  <script src="compound-ant-application.js"></script>
+</body>
+</html>

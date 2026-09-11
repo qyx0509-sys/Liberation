@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>奖励情况（本科期间）</title>
+  <link rel="stylesheet" href="awards-fixture.css">
+</head>
+<body>
+  <header class="site-header">
+    <strong>研究生申请系统（本地测试夹具）</strong>
+    <label>
+      站内搜索
+      <input id="unrelated-search" name="site_search" placeholder="这个输入框不得被奖励适配器填写">
+    </label>
+  </header>
+
+  <nav aria-label="面包屑">首页 / 申请信息 / 奖励与荣誉 / 奖励情况（本科期间）</nav>
+
+  <main>
+    <h1>奖励情况（本科期间）</h1>
+    <p class="hint">请如实填写本科期间获得的奖励。此页面仅用于本地自动化测试。</p>
+
+    <section id="awards-section" aria-labelledby="awards-heading">
+      <h2 id="awards-heading">获奖情况</h2>
+      <table id="awards-table">
+        <caption>本科期间奖励列表</caption>
+        <thead>
+          <tr id="awards-head-row"></tr>
+        </thead>
+        <tbody id="awards-body"></tbody>
+      </table>
+      <div id="awards-actions"></div>
+    </section>
+
+    <section class="other-fields" aria-labelledby="other-heading">
+      <h2 id="other-heading">其他申请信息（用于防错填测试）</h2>
+      <label>手机号 <input id="other-phone" name="phone" value="示例占位值"></label>
+      <label>申请理由 <textarea id="other-reason" name="application_reason">保留原内容</textarea></label>
+    </section>
+
+    <footer class="page-actions">
+      <button id="previous-button" type="button">上一步</button>
+      <button id="next-button" type="button">下一步</button>
+      <button id="final-submit-button" type="button">正式提交</button>
+    </footer>
+
+    <output id="fixture-status" aria-live="polite">夹具初始化中</output>
+  </main>
+
+  <script src="awards-fixture.js"></script>
+</body>
+</html>

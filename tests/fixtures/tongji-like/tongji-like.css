@@ -1,0 +1,203 @@
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  color: #263445;
+  background: #f5f7fa;
+  font: 15px/1.5 "Microsoft YaHei", system-ui, sans-serif;
+}
+
+.portal-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  min-height: 74px;
+  padding: 20px 34px;
+  color: #fff;
+  background: #2678b9;
+}
+
+.portal-head strong {
+  font-size: 24px;
+}
+
+.portal-head span {
+  opacity: .85;
+}
+
+.portal-shell {
+  margin: 0;
+  border: 0;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 26px;
+  padding: 28px;
+}
+
+.portal-rail,
+#application-content {
+  border: 1px solid #d8e0e8;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(35, 58, 79, .08);
+}
+
+.stage-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 8px;
+}
+
+.stage-list tr {
+  border-bottom: 1px solid #edf1f4;
+}
+
+.stage-list td {
+  padding: 0;
+}
+
+.stage-list a,
+.stage-list button {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 10px 12px;
+  color: #4b5e70;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.stage-list tr.active a,
+.stage-list tr.active button {
+  color: #162f46;
+  background: #eaf5ff;
+  font-weight: 700;
+}
+
+#formal-submit-link {
+  color: #a83232;
+}
+
+#application-content {
+  min-height: 680px;
+  padding: 22px 28px;
+}
+
+.crumb {
+  margin-bottom: 22px;
+  color: #7b8996;
+}
+
+.section-caption {
+  margin-bottom: 18px;
+  color: #3675c5;
+  font-size: 21px;
+}
+
+.data-grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-grid td {
+  padding: 11px 12px;
+  border-bottom: 1px solid #e0e6ec;
+}
+
+.data-grid th {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ccd8e3;
+  color: #394b5a;
+  text-align: left;
+}
+
+.repeated-grid th:nth-child(1),
+.repeated-grid th:nth-child(2) {
+  width: 18%;
+}
+
+.repeated-grid th:nth-child(3) {
+  width: 40%;
+}
+
+.prompt-cell {
+  width: 30%;
+  color: #26323c;
+  font-weight: 700;
+}
+
+.prompt-cell span {
+  margin-left: 2px;
+  color: #e02020;
+}
+
+input,
+select {
+  width: min(520px, 100%);
+  min-height: 40px;
+  padding: 7px 10px;
+  border: 1px solid #cfd8e1;
+  border-radius: 5px;
+  background: #fff;
+  font: inherit;
+}
+
+button {
+  min-height: 38px;
+}
+
+#add-family-row {
+  margin-top: 14px;
+  padding: 7px 18px;
+  border: 1px solid #2f8ed1;
+  border-radius: 5px;
+  color: #fff;
+  background: #2f8ed1;
+  font: inherit;
+}
+
+.compound-control {
+  display: flex;
+  gap: 8px;
+}
+
+.compound-control button {
+  flex: 0 0 auto;
+  padding: 6px 15px;
+  border: 1px solid #cfd8e1;
+  border-radius: 5px;
+  background: #f7f9fb;
+  font: inherit;
+}
+
+#fixture-status {
+  display: block;
+  margin-top: 24px;
+  color: #547187;
+}
+
+@media (max-width: 760px) {
+  .portal-shell {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .portal-rail {
+    max-height: 260px;
+    overflow: auto;
+  }
+
+  #application-content {
+    padding: 16px;
+  }
+}

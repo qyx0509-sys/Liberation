@@ -1,0 +1,70 @@
+Phase 3.5 Final Closure — Final Test Result
+Generated: 2026-09-10 (Asia/Shanghai)
+
+Baseline Unit: 730 / 730 PASS
+Baseline Matrix: 43 / 43 PASS
+Baseline E2E: 49 / 49 PASS
+Baseline Build: PASS
+
+Real-DOM Singleton: 13 / 13 PASS
+  node --test tests/unit/phase3-5-semantic-collection-singleton-binding.test.mjs
+
+Repeatable Action Boundary: 27 / 27 PASS
+  node --test tests/unit/phase3-5-repeatable-action-ownership-runtime.test.mjs tests/unit/phase3-5-completion-repeatable-action-owner.test.mjs
+
+Legacy Ant Safety: 49 / 49 PASS
+  node --test tests/unit/phase3-3-2-1-calendar-mode-strategy.test.mjs tests/unit/phase3-3-2-2b-calendar-transition-hardening.test.mjs
+
+Cascader: 48 / 48 PASS
+  node --test tests/unit/phase3-3-2-5-cascader-adapter.test.mjs tests/unit/phase3-3-2-phase3-3-3-compound-fixture-contract.test.mjs
+
+Annotated Label/GPA: 1 / 1 PASS
+  node --test --test-name-pattern="GPA exact and strict annotated base labels" tests/unit/phase3-5-semantic-collection-singleton-binding.test.mjs
+
+Stable Scan: 11 / 11 PASS
+  node --test tests/unit/phase3-5-stable-scan-telemetry.test.mjs
+
+Correct Fail-closed: 122 / 122 PASS
+  Selected safety regression set covers file authorization, navigation, interaction,
+  progression, singleton ambiguity, paper status/author rank vocabulary, Site Profile,
+  runtime freshness, region isolation, gender option safety, and core runtime security.
+
+Final Unit: 743 / 743 PASS
+  npm.cmd run test:unit
+
+Final Matrix: 43 / 43 PASS
+  npm.cmd run test:matrix
+  The six final-closure capability IDs execute mapped runtime unit evidence; they are
+  not catalog-only declarations.
+
+Final E2E: 51 / 51 PASS
+  JF_BROWSER_PATH=C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe
+  JF_E2E_HEADED=1
+  npm.cmd run test:e2e
+  Breakdown: awards 18, wizard 8, tongji-like 4, compound-ant 10,
+  profile-management 1, Phase 3.5 matrix 7, extension-load 3.
+
+node --check: 30 / 30 PASS
+  Every added or modified JS/MJS file relative to the frozen runtime-closure baseline.
+
+Build: PASS
+  npm.cmd run build
+
+Runtime Wiring: PASS
+  Runtime/build/freshness subset: 14 / 14 PASS.
+  Source and dist runtime revision: jiefang-page-runtime-v2.
+  Popup injection list: 49 unique files in identical source/dist order.
+
+src/dist: PASS
+  84 / 84 built files have a source/root counterpart with identical SHA-256.
+
+Safety gates observed in Matrix/E2E: automatic submit 0, delete 0, unsafe progression 0,
+unknown upload 0, legal auto-consent 0, viewer navigation 0, wrong overlay 0,
+wrong row 0, wrong region 0, unexpected overwrite 0.
+
+Environment note:
+  The complete browser suite ran in headed Microsoft Edge because this host's headless
+  Chromium path has an intermittent GPU/CDP startup failure. The tests use controlled,
+  local, structurally faithful fixtures and a real MV3 extension load. No authenticated
+  university target-site session was available, so that manual acceptance remains a
+  deployment check rather than evidence claimed by this result.

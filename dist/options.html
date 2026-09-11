@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>解放 · 申请资料管理</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="src/ui/design-tokens.css" />
+  <link rel="stylesheet" href="src/ui/options.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="product-heading"><span class="brand-mark" aria-label="解放">解</span><h1>我的申请资料</h1></div>
+  <div class="topbar-coverage" title="仅表示申请资料字段的填写覆盖情况，不代表任何学校报名要求。"><span id="header-coverage">—</span><span>资料覆盖度</span></div>
+  <div class="topbar-btns">
+    <span id="save-state" class="save-state" role="status" aria-live="polite" data-state="loading">正在加载…</span>
+    <button class="btn" id="btn-import" type="button"><span data-icon="upload"></span><span>导入</span></button>
+    <div class="export-menu-wrap"><button class="btn" id="btn-export-menu" type="button" aria-expanded="false" aria-controls="export-menu" aria-haspopup="menu"><span data-icon="download"></span><span>导出</span><span data-icon="chevron-down"></span></button>
+      <div id="export-menu" class="menu" role="menu" hidden><button class="btn btn-export" id="btn-export" role="menuitem" type="button">导出 JSON</button><button class="btn btn-export" id="btn-export-md" role="menuitem" type="button">导出 Markdown</button></div>
+    </div>
+    <button class="btn btn-save" id="btn-save" type="button"><span data-icon="save"></span><span>保存资料</span></button>
+  </div>
+</header>
+<div class="workspace-tools"><label for="section-selector">当前模块</label><select id="section-selector" aria-label="选择申请资料模块"></select><button id="btn-inspector" class="btn" type="button" aria-expanded="false" aria-controls="profile-inspector"><span data-icon="list"></span>资料检查器</button></div>
+
+<div class="page-wrap">
+<div class="layout">
+
+  <!-- 左侧导航 -->
+  <nav class="sidenav">
+    <div class="sidenav-hd"><h2>内容导航</h2><div class="sidenav-total" id="nav-total">正在读取资料…</div></div>
+    <details class="nav-group" open><summary>个人<span data-icon="chevron-down"></span></summary>
+      <a href="#sec-personal" class="active" aria-current="location"><span data-icon="user"></span><span>个人信息</span><span class="nav-count" id="cnt-personal">—</span></a>
+      <a href="#sec-intention"><span data-icon="target"></span><span>求职意向</span><span class="nav-count" id="cnt-intention">—</span></a>
+      <a href="#sec-family"><span data-icon="users"></span><span>家庭信息</span><span class="nav-count" id="cnt-family">—</span></a>
+    </details>
+    <details class="nav-group" open><summary>教育<span data-icon="chevron-down"></span></summary>
+      <a href="#sec-education"><span data-icon="graduation"></span><span>教育背景</span><span class="nav-count" id="cnt-education">—</span></a>
+      <a href="#sec-languages"><span data-icon="globe"></span><span>外语能力</span><span class="nav-count" id="cnt-languages">—</span></a>
+    </details>
+    <details class="nav-group" open><summary>经历<span data-icon="chevron-down"></span></summary>
+      <a href="#sec-internship"><span data-icon="briefcase"></span><span>学习和工作经历</span><span class="nav-count" id="cnt-internship">—</span></a>
+      <a href="#sec-projects"><span data-icon="folder"></span><span>项目经历</span><span class="nav-count" id="cnt-projects">—</span></a>
+      <a href="#sec-practice"><span data-icon="users"></span><span>社会实践 / 学生工作</span><span class="nav-count" id="cnt-practice">—</span></a>
+    </details>
+    <details class="nav-group" open><summary>科研<span data-icon="chevron-down"></span></summary>
+      <a href="#sec-research"><span data-icon="flask"></span><span>科研工作</span><span class="nav-count" id="cnt-research">—</span></a>
+      <a href="#sec-papers"><span data-icon="file"></span><span>学术成果</span><span class="nav-count" id="cnt-papers">—</span></a>
+    </details>
+    <details class="nav-group" open><summary>能力与荣誉<span data-icon="chevron-down"></span></summary>
+      <a href="#sec-awards"><span data-icon="award"></span><span>奖励与荣誉</span><span class="nav-count" id="cnt-awards">—</span></a>
+      <a href="#sec-skills"><span data-icon="sparkles"></span><span>技能专长</span><span class="nav-count" id="cnt-skills">—</span></a>
+      <a href="#sec-intro"><span data-icon="message"></span><span>自我评价</span><span class="nav-count" id="cnt-intro">—</span></a>
+    </details>
+    <details class="nav-group" open><summary>申请补充<span data-icon="chevron-down"></span></summary>
+      <a href="#sec-application"><span data-icon="file"></span><span>申请附加信息</span><span class="nav-count" id="cnt-application">—</span></a>
+    </details>
+    <details class="nav-group compatibility-nav"><summary>更多 / 兼容数据<span data-icon="chevron-down"></span></summary><button type="button" class="compatibility-link" data-section-target="sec-work">旧版工作经历</button></details>
+  </nav>
+
+  <!-- 主内容 -->
+  <main class="content" id="profile-content" aria-busy="true">
+    <div id="workspace-message" class="workspace-message" role="status" aria-live="polite" hidden></div>
+
+    <!-- 个人信息 -->
+    <div class="card" id="sec-personal">
+      <div class="card-header"><h2>个人信息</h2></div>
+      <div class="card-body">
+        <div class="grid g2">
+          <div class="field"><label for="p_name">姓名</label><input id="p_name"/></div>
+          <div class="field"><label for="p_namePinyin">姓名拼音</label><input id="p_namePinyin" placeholder="SHILI TONGXUE" autocomplete="off"/></div>
+          <div class="field"><label for="p_gender">性别</label>
+            <select id="p_gender"><option value="">请选择</option><option>男</option><option>女</option></select>
+          </div>
+          <div class="field"><label for="p_birthday">出生日期</label><input id="p_birthday" placeholder="2002-01-21"/></div>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label for="p_age">年龄</label><input id="p_age" placeholder="23"/></div>
+          <div class="field"><label for="p_phone">手机号</label><input id="p_phone"/></div>
+          <div class="field"><label for="p_email">邮箱</label><input id="p_email"/></div>
+          <div class="field"><label for="p_wechat">微信号</label><input id="p_wechat"/></div>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label for="p_qq">QQ号</label><input id="p_qq"/></div>
+          <div class="field"><label for="p_idType">证件类型</label><input id="p_idType" placeholder="居民身份证 / 护照"/></div>
+          <div class="field"><label for="p_id_number">证件号码</label><input id="p_id_number"/></div>
+          <div class="field"><label for="p_marital">婚姻状况</label>
+            <select id="p_marital"><option value="">请选择</option><option>未婚</option><option>已婚</option><option>离异</option></select>
+          </div>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label for="p_healthStatus">健康状况</label><input id="p_healthStatus" placeholder="健康"/></div>
+          <div class="field"><label for="p_political">政治面貌</label>
+            <select id="p_political"><option value="">请选择</option><option>中共党员</option><option>中国共产党预备党员</option><option>共青团员</option><option>群众</option><option>民主党派</option></select>
+          </div>
+          <div class="field"><label for="p_ethnicity">民族</label><input id="p_ethnicity" placeholder="汉族"/></div>
+          <div class="field"><label for="p_nationality">国籍</label><input id="p_nationality" placeholder="中国"/></div>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label for="p_height">身高(cm)</label><input id="p_height"/></div>
+          <div class="field"><label for="p_birthplaceRegion">出生地</label><input id="p_birthplaceRegion" placeholder="省 / 市 / 区县"/></div>
+          <div class="field"><label for="p_hometown_province">籍贯省份</label><input id="p_hometown_province" placeholder="福建省"/></div>
+          <div class="field"><label for="p_hometown_city">籍贯城市</label><input id="p_hometown_city" placeholder="漳州市"/></div>
+        </div>
+        <div class="grid g3" style="margin-top:14px">
+          <div class="field"><label for="p_current_city">现居城市</label><input id="p_current_city"/></div>
+          <div class="field"><label for="p_address">现居地址</label><input id="p_address"/></div>
+          <div class="field"><label for="p_householdRegion">户口所在地</label><input id="p_householdRegion" placeholder="省 / 市 / 区县"/></div>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label for="p_household_address">户口所在地详细地址</label><input id="p_household_address" autocomplete="street-address"/></div>
+          <div class="field"><label for="c_address">通讯地址</label><input id="c_address" autocomplete="street-address"/></div>
+        </div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label for="c_postcode">通讯地址邮政编码</label><input id="c_postcode" inputmode="numeric" placeholder="请填写邮政编码"/></div>
+          <div class="field"><label for="c_archiveRegion">档案所在地</label><input id="c_archiveRegion" placeholder="省 / 市 / 区县"/></div>
+          <div class="field"><label for="c_archive_organization">档案所在单位</label><input id="c_archive_organization"/></div>
+          <div class="field"><label for="c_archive_postcode">档案所在单位邮政编码</label><input id="c_archive_postcode" inputmode="numeric" placeholder="请填写邮政编码"/></div>
+        </div>
+        <div class="grid" style="margin-top:14px">
+          <div class="field"><label for="c_archive_address">档案所在单位地址</label><input id="c_archive_address"/></div>
+        </div>
+        <div class="grid g3" style="margin-top:14px">
+          <div class="field"><label for="p_militaryStatus">是否现役军人</label>
+            <select id="p_militaryStatus"><option value="">请选择</option><option>非军人</option><option>现役军人</option></select>
+          </div>
+          <div class="field"><label for="c_landline">固定电话</label><input id="c_landline" placeholder="可选"/></div>
+          <div class="field"><label for="c_emergencyPhone">紧急联系人电话</label><input id="c_emergencyPhone" placeholder="可选"/></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 求职意向 -->
+    <div class="card" id="sec-intention">
+      <div class="card-header"><h2>求职意向</h2></div>
+      <div class="card-body">
+        <div class="grid g3">
+          <div class="field"><label for="i_status">求职状态</label>
+            <select id="i_status"><option value="">请选择</option><option>在校学生</option><option>应届毕业生</option><option>在职找机会</option><option>离职待业</option></select>
+          </div>
+          <div class="field"><label for="i_type">求职类型</label>
+            <select id="i_type"><option value="">请选择</option><option>实习</option><option>全职</option><option>兼职</option></select>
+          </div>
+          <div class="field"><label for="i_available">到岗时间</label><input id="i_available" placeholder="随时到岗"/></div>
+        </div>
+        <div class="grid g3" style="margin-top:14px">
+          <div class="field"><label for="i_industry">期望行业</label><input id="i_industry" placeholder="互联网/AI"/></div>
+          <div class="field"><label for="i_position">期望岗位</label><input id="i_position" placeholder="大模型应用实习生"/></div>
+          <div class="field"><label for="i_city">期望城市</label><input id="i_city" placeholder="不限"/></div>
+        </div>
+        <div class="grid g3" style="margin-top:14px">
+          <div class="field"><label for="i_salary">期望薪资</label><input id="i_salary" placeholder="面议"/></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="card" id="sec-education">
+      <div class="card-header"><h2>教育背景 / 学习信息</h2></div>
+      <div class="card-body">
+        <div id="edu-list"></div>
+        <button class="btn-add" id="edu-add">+ 添加教育经历</button>
+      </div>
+    </div>
+
+    <!-- 学习和工作经历 -->
+    <div class="card" id="sec-internship">
+      <div class="card-header"><h2>学习和工作经历</h2></div>
+      <div class="card-body">
+        <div id="intern-list"></div>
+        <button class="btn-add" id="intern-add" type="button">+ 添加学习或工作经历</button>
+      </div>
+    </div>
+
+    <!-- 工作经历 -->
+    <div class="card" id="sec-work">
+      <div class="card-header"><h2>旧版工作经历（兼容）</h2></div>
+      <div class="card-body">
+        <div class="field-hint" style="margin-bottom:12px">保留旧资料中的独立工作记录；高校申请请优先维护“学习和工作经历”。</div>
+        <div id="work-list"></div>
+        <button class="btn-add" id="work-add">+ 添加工作经历</button>
+      </div>
+    </div>
+
+    <!-- 项目经历 -->
+    <div class="card" id="sec-projects">
+      <div class="card-header"><h2>项目经历</h2></div>
+      <div class="card-body">
+        <div id="proj-list"></div>
+        <button class="btn-add" id="proj-add">+ 添加项目经历</button>
+      </div>
+    </div>
+
+    <!-- 科研工作 -->
+    <div class="card" id="sec-research">
+      <div class="card-header"><h2>科研工作</h2></div>
+      <div class="card-body">
+        <div class="field-hint" style="margin-bottom:12px">按项目逐条保存；南京大学页面最多填写 3 项，资料库可保留更多项目。</div>
+        <div id="research-list"></div>
+        <button class="btn-add" id="research-add" type="button">+ 添加科研工作</button>
+      </div>
+    </div>
+
+    <!-- 学生干部 / 实习实践经历 -->
+    <div class="card" id="sec-practice">
+      <div class="card-header"><h2>担任学生干部或实习实践经历</h2></div>
+      <div class="card-body">
+        <div class="field-hint" style="margin-bottom:12px">对应网页字段：开始时间、结束时间、地点、主要内容。</div>
+        <div id="practice-list"></div>
+        <button class="btn-add" id="practice-add" type="button">+ 添加学生干部 / 实习实践经历</button>
+      </div>
+    </div>
+
+    <!-- 奖励与荣誉：独立顶级 awards 数组 -->
+    <div class="card" id="sec-awards">
+      <div class="card-header"><h2>奖励与荣誉 / 奖励情况</h2></div>
+      <div class="card-body">
+        <div class="field" style="margin-bottom:14px">
+          <label for="profile_name">资料名称</label>
+          <input id="profile_name" placeholder="默认申请资料"/>
+          <div class="field-hint">用于区分不同申请资料，会随申请资料一起保存与导出。</div>
+        </div>
+        <div id="award-list"></div>
+        <button class="btn-add" id="award-add">+ 添加奖励</button>
+        <div class="award-toolbar">
+          <button class="btn btn-export" id="award-import-toggle" type="button">批量导入</button>
+          <button class="btn btn-export" id="award-export" type="button">导出奖励 JSON</button>
+          <button class="btn" id="award-validate" type="button" style="background:#edf2f7;color:#2d3748">检查数据格式</button>
+        </div>
+        <div class="award-import-panel" id="award-import-panel">
+          <div class="field">
+            <label for="award-import-text">粘贴奖励 JSON 或制表符分隔文本</label>
+            <textarea id="award-import-text" spellcheck="false" placeholder='[{"time":"2025-7","location":"青岛","content":"示例竞赛奖项"}]'></textarea>
+            <div class="award-help">JSON 可粘贴数组或包含 awards 数组的对象。文本前 8 列依次为：时间、地点、内容、奖项级别、获奖等级、主办单位、证书文件名、备注；第 9 列可选填奖项类别（用 Tab 分隔）。导入会追加，不会删除已有奖励。</div>
+          </div>
+          <div class="award-toolbar">
+            <button class="btn btn-save" id="award-import-confirm" type="button">检查并导入</button>
+            <button class="btn" id="award-import-cancel" type="button" style="background:#edf2f7;color:#4a5568">取消</button>
+          </div>
+        </div>
+        <div class="award-validation-summary" id="award-validation-summary" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <!-- 技能专长 -->
+    <div class="card" id="sec-skills">
+      <div class="card-header"><h2>技能专长</h2></div>
+      <div class="card-body">
+        <div class="grid" style="gap:14px">
+          <div class="field"><label for="s_tech">技术技能</label><textarea id="s_tech" style="min-height:100px"></textarea></div>
+          <div class="field"><label for="s_workplace">职场技能 / 其他能力</label><textarea id="s_workplace" style="min-height:60px"></textarea></div>
+          <div class="field"><label for="s_interests">兴趣爱好</label><input id="s_interests"/></div>
+          <div class="field"><label for="s_career_plan">职业规划</label><textarea id="s_career_plan" style="min-height:60px"></textarea></div>
+          <div class="field"><label for="s_certificates">专业证书</label><textarea id="s_certificates" style="min-height:60px"></textarea></div>
+          <div class="field"><label for="s_cover_letter">求职信</label><textarea id="s_cover_letter" style="min-height:100px"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 外语能力 -->
+    <div class="card" id="sec-languages">
+      <div class="card-header"><h2>外语能力</h2></div>
+      <div class="card-body">
+        <div id="lang-list"></div>
+        <button class="btn-add" id="lang-add">+ 添加语言</button>
+      </div>
+    </div>
+
+    <!-- 论文成果 -->
+    <div class="card" id="sec-papers">
+      <div class="card-header"><h2>学术成果</h2></div>
+      <div class="card-body">
+        <div id="paper-list"></div>
+        <button class="btn-add" id="paper-add">+ 添加论文</button>
+      </div>
+    </div>
+
+    <!-- 自我评价 -->
+    <div class="card" id="sec-intro">
+      <div class="card-header"><h2>自我评价</h2></div>
+      <div class="card-body">
+        <div class="field"><label for="intro">自我评价</label><textarea id="intro" style="min-height:120px"></textarea></div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label for="github">GitHub</label><input id="github"/></div>
+          <div class="field"><label for="homepage">个人主页</label><input id="homepage"/></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 申请附加信息：与自我评价保持独立 -->
+    <div class="card" id="sec-application">
+      <div class="card-header"><h2>申请附加信息</h2></div>
+      <div class="card-body">
+        <div class="grid" style="gap:14px">
+          <div class="field">
+            <label for="app_disciplinaryHistory">作弊处分等情况</label>
+            <textarea id="app_disciplinaryHistory" maxlength="200" aria-describedby="app_disciplinaryHistory_count" placeholder="没有相关情况可填写“无”"></textarea>
+            <div class="char-counter"><span id="app_disciplinaryHistory_count">0</span>/200</div>
+          </div>
+          <div class="field">
+            <label for="app_personalStatement">个人陈述</label>
+            <textarea id="app_personalStatement" maxlength="1000" aria-describedby="app_personalStatement_count" style="min-height:140px"></textarea>
+            <div class="char-counter"><span id="app_personalStatement_count">0</span>/1000</div>
+          </div>
+          <div class="field">
+            <label for="app_notes">备注信息</label>
+            <textarea id="app_notes" maxlength="1000" aria-describedby="app_notes_count"></textarea>
+            <div class="char-counter"><span id="app_notes_count">0</span>/1000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 家庭主要成员及主要社会关系 -->
+    <div class="card" id="sec-family">
+      <div class="card-header"><h2>家庭主要成员及主要社会关系</h2></div>
+      <div class="card-body">
+        <div class="field-hint" style="margin-bottom:12px">每位成员单独添加一条；旧版“家庭成员描述”会自动迁移到备注中，不会丢失。</div>
+        <div id="family-list"></div>
+        <button class="btn-add" id="family-add" type="button">+ 添加家庭成员或社会关系</button>
+      </div>
+    </div>
+
+    <!-- JD 描述 -->
+    <div class="card" id="sec-jd" hidden>
+      <div class="card-header"><h2>JD 描述</h2></div>
+      <div class="card-body">
+        <div id="jd-empty-tip" style="color:#a0aec0;font-size:13px;padding:8px 0">
+          尚未提取 JD，请在招聘网站职位页面的悬浮面板点击「 提取 JD」。
+        </div>
+        <div id="jd-content" style="display:none">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+            <div style="flex:1;min-width:140px">
+              <div class="field-label">岗位名称</div>
+              <div id="jd-job-title" style="font-size:15px;font-weight:600;color:#2d3748"></div>
+            </div>
+            <div style="flex:1;min-width:140px">
+              <div class="field-label">来源网站</div>
+              <div id="jd-site" style="font-size:13px;color:#718096"></div>
+            </div>
+            <div style="flex:1;min-width:140px">
+              <div class="field-label">提取时间</div>
+              <div id="jd-time" style="font-size:13px;color:#718096"></div>
+            </div>
+          </div>
+          <div style="margin-bottom:12px">
+            <div class="field-label">关键词</div>
+            <div id="jd-keywords" style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px"></div>
+          </div>
+          <div style="margin-bottom:10px">
+            <div class="field-label" style="cursor:pointer" data-toggle-section="jd-desc-body"> 职位描述 <span style="color:#a0aec0;font-weight:400;font-size:11px">（点击展开）</span></div>
+            <div id="jd-desc-body" style="display:none;font-size:12px;color:#4a5568;background:#f7fafc;padding:10px;border-radius:6px;max-height:200px;overflow-y:auto;white-space:pre-wrap;margin-top:4px"></div>
+          </div>
+          <div style="margin-bottom:14px">
+            <div class="field-label" style="cursor:pointer" data-toggle-section="jd-req-body"> 职位要求 <span style="color:#a0aec0;font-weight:400;font-size:11px">（点击展开）</span></div>
+            <div id="jd-req-body" style="display:none;font-size:12px;color:#4a5568;background:#f7fafc;padding:10px;border-radius:6px;max-height:200px;overflow-y:auto;white-space:pre-wrap;margin-top:4px"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <a id="jd-source-link" href="#" target="_blank" class="btn btn-export" style="font-size:12px;padding:6px 12px"> 原始页面</a>
+            <button id="btn-clear-jd" class="btn" style="padding:6px 12px;background:#fed7d7;color:#c53030;font-size:12px"> 清除 JD</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI 优化 -->
+    <div class="card" id="sec-ai-revise" hidden>
+      <div class="card-header"><h2>AI 优化</h2></div>
+      <div class="card-body">
+        <div id="revise-no-jd" style="background:#fff5f5;color:#c53030;font-size:12px;padding:8px 10px;border-radius:6px;margin-bottom:10px;display:none">
+           未提取 JD，AI 将仅根据简历内容进行通用优化。建议先提取 JD 效果更好。
+        </div>
+        <div style="margin-bottom:10px">
+          <label class="field-label">优化指令 <span style="color:#a0aec0;font-weight:400">（可自定义）</span></label>
+          <textarea id="revise-prompt" style="width:100%;min-height:72px;font-size:12px;border:1px solid #e2e8f0;border-radius:6px;padding:8px;resize:vertical;box-sizing:border-box;margin-top:4px;color:#2d3748">提取JD中的关键词和能力要求，对照着帮我优化简历，让我看起来就是他们想要的人</textarea>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <label style="font-size:12px;display:flex;align-items:center;gap:4px"><input type="checkbox" id="revise-skills" checked> 技能专长</label>
+          <label style="font-size:12px;display:flex;align-items:center;gap:4px"><input type="checkbox" id="revise-intro" checked> 自我评价</label>
+          <label style="font-size:12px;display:flex;align-items:center;gap:4px"><input type="checkbox" id="revise-projects"> 项目描述</label>
+        </div>
+        <button id="btn-ai-revise" class="btn btn-primary" style="width:100%;margin-bottom:12px"> AI 优化内容</button>
+        <div id="revise-result"></div>
+      </div>
+    </div>
+
+    <!-- 模拟面试 -->
+    <div class="card" id="sec-interview" hidden>
+      <div class="card-header"><h2>模拟面试</h2></div>
+      <div class="card-body">
+        <div style="font-size:13px;color:#718096;margin-bottom:12px">
+          AI 扮演挑剔面试官，针对你的简历提出刁钻问题；若已导入 JD 则结合岗位要求追问。
+        </div>
+        <div style="margin-bottom:12px">
+          <label class="field-label">面试官指令 <span style="color:#a0aec0;font-weight:400">（可自定义）</span></label>
+          <textarea id="interview-prompt" style="width:100%;min-height:72px;font-size:12px;border:1px solid #e2e8f0;border-radius:6px;padding:8px;resize:vertical;box-sizing:border-box;margin-top:4px;color:#2d3748">你现在是一个挑剔的面试官，看完我的简历，请提出5个刁钻问题或指出哪段数据不清晰</textarea>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <button id="btn-gen-interview" class="btn btn-primary" style="flex:1"> 开始面试</button>
+          <button id="btn-regen-interview" class="btn btn-export" style="display:none"> 重新提问</button>
+        </div>
+        <div id="interview-result"></div>
+      </div>
+    </div>
+
+  </main><!-- /content -->
+
+  <!-- 右侧面板 -->
+  <aside class="rightpanel" id="profile-inspector" aria-label="资料检查器">
+    <div class="inspector-title"><h2>资料检查器</h2><button class="icon-btn" id="btn-inspector-close" type="button" aria-label="关闭资料检查器"><span data-icon="x"></span></button></div>
+    <section class="rpanel-card coverage-card" aria-labelledby="coverage-heading"><div class="rpanel-hd"><h3 id="coverage-heading">资料覆盖度</h3><strong id="coverage-percent">—</strong></div><div class="rpanel-body"><progress id="coverage-progress" max="100" value="0" aria-label="申请资料字段覆盖度"></progress><p class="inspector-help">按已维护的申请资料字段统计，不代表任何学校报名要求。</p><div class="coverage-metrics"><div><strong id="coverage-filled">—</strong><span>已填写</span></div><div><strong id="coverage-missing">—</strong><span>缺失字段</span></div><div><strong id="coverage-materials">—</strong><span>本地材料</span></div></div></div></section>
+    <section class="rpanel-card current-module-card"><div class="rpanel-hd"><h3>当前模块</h3><strong id="module-coverage">—</strong></div><div class="rpanel-body"><p id="module-title">个人信息</p><progress id="module-progress" max="100" value="0" aria-label="当前模块字段覆盖度"></progress><h4>可继续补充</h4><div id="missing-fields" class="missing-fields"></div></div></section>
+
+    <!-- 导入资料 -->
+    <div class="rpanel-card" id="sec-import">
+      <div class="rpanel-hd"><span data-icon="upload"></span>导入资料</div>
+      <div class="rpanel-body">
+        <div id="import-zone" class="import-zone" role="button" tabindex="0" aria-label="导入 JSON、Markdown、TXT、DOCX 或 PDF 申请资料">
+          <span class="zone-icon" data-icon="upload"></span>
+          <span class="zone-text">拖放或点击导入申请资料</span>
+          <span class="zone-formats">JSON / MD / TXT / DOCX / PDF<br>文本格式仅作本地规则解析</span>
+          <div class="parse-progress"><div class="parse-bar" id="parse-bar"></div></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="rpanel-card" id="sec-material-library">
+      <div class="rpanel-hd"><span data-icon="paperclip"></span>个人材料库</div>
+      <div class="rpanel-body">
+        <div class="material-drop" id="material-drop" tabindex="0" role="button" aria-label="拖入或选择材料文件">
+          <strong>拖放文件到这里</strong>
+          <small>支持 PDF / JPG / PNG / DOCX，可多选；文件仅保存在本机浏览器</small>
+        </div>
+        <input id="material-file-input" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx" multiple hidden>
+        <input id="material-replace-input" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx" hidden>
+        <div class="material-usage" id="material-usage">正在读取材料库…</div>
+        <div class="material-list" id="material-list"></div>
+        <div id="material-message" role="status" style="margin-top:8px;color:#52677a;font-size:10px"></div>
+      </div>
+    </div>
+
+    <div class="rpanel-card" id="sec-ai" hidden>
+      <div class="rpanel-hd ai-hd"> AI 填写设置</div>
+      <div class="rpanel-body">
+        <div class="rpanel-field">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px">
+            <input type="checkbox" id="ai_enabled" style="width:14px;height:14px">
+            启用 AI 模式
+          </label>
+        </div>
+
+        <div class="rpanel-field">
+          <label for="ai_provider">AI 提供商</label>
+          <select id="ai_provider">
+            <option value="openai">OpenAI (GPT)</option>
+            <option value="claude">Anthropic (Claude)</option>
+            <option value="qwen">通义千问 (阿里)</option>
+            <option value="kimi">月之暗面 (Kimi)</option>
+            <option value="deepseek">DeepSeek</option>
+            <option value="glm">智谱 GLM</option>
+            <option value="openai_compat">其他兼容接口</option>
+          </select>
+        </div>
+
+        <div class="rpanel-field">
+          <label for="ai_model">模型名称</label>
+          <input id="ai_model" placeholder="留空使用默认"/>
+        </div>
+
+        <div class="rpanel-field" id="ai_baseurl_wrap" style="display:none">
+          <label for="ai_base_url">API Base URL</label>
+          <input id="ai_base_url" placeholder="兼容接口地址（本地模式未启用）"/>
+        </div>
+
+        <div class="rpanel-field">
+          <label for="ai_api_key">API Key</label>
+          <input id="ai_api_key" type="password" placeholder="sk-..."/>
+        </div>
+
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+          <button class="btn btn-save" id="btn-save-ai" style="padding:6px 14px;font-size:12px">保存配置</button>
+          <button class="btn btn-export" id="btn-test-ai" style="padding:6px 14px;font-size:12px">测试连接</button>
+        </div>
+        <div id="ai-test-result" style="font-size:11px;color:#38a169;margin-bottom:8px"></div>
+
+        <div style="padding:10px;background:#f7fafc;border-radius:6px;font-size:11px;color:#718096;line-height:1.8">
+          <strong style="color:#4a5568">推荐模型：</strong><br>
+          通义 → <code>qwen-plus</code><br>
+          Kimi → <code>moonshot-v1-8k</code><br>
+          DeepSeek → <code>deepseek-chat</code><br>
+          GLM → <code>glm-4-flash</code>（免费）<br>
+          <span style="color:#a0aec0;display:block;margin-top:4px">Key 仅存本机，不上传服务器。</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="sec-local-mode" class="privacy-note"><span data-icon="shield"></span><div><strong>本地处理</strong><p>申请资料和材料保存在本机浏览器。不会自动提交。</p></div></div>
+  </aside><!-- /rightpanel -->
+
+</div><!-- /layout -->
+</div><!-- /page-wrap -->
+
+<div id="inspector-backdrop" class="drawer-backdrop" hidden></div>
+<dialog id="delete-record-dialog" class="confirm-dialog" aria-labelledby="delete-record-title" aria-describedby="delete-record-description" aria-modal="true"><form method="dialog"><h2 id="delete-record-title">删除这条记录？</h2><p id="delete-record-description">此操作会从当前申请资料中移除这条记录。保存之前，可重新加载页面恢复已保存的资料。</p><div class="dialog-actions"><button id="delete-record-cancel" class="btn" value="cancel" autofocus>取消</button><button id="delete-record-confirm" class="btn btn-danger" value="confirm">删除记录</button></div></form></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="importFile" accept=".json,.md,.txt,.docx,.pdf"/>
+
+<script src="src/mappings/file-field-aliases.js"></script>
+<script src="src/storage/indexeddb.js"></script>
+<script src="src/storage/material-library.js"></script>
+<script src="src/storage/resume-store.js"></script>
+<script src="src/ui/design-system.js"></script>
+<script src="src/ui/profile-coverage.js"></script>
+<script src="src/ui/options-workspace.js"></script>
+<script src="options.js"></script>
+<script src="src/storage/material-library-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+Phase 3.5 Final Closure — Changed Files
+Comparison baseline: JobFill_phase3_5_runtime_closure_complete.zip
+Generated: 2026-09-10 (Asia/Shanghai)
+
+Notes:
+- This workspace is not a Git checkout, so status is based on SHA-256 comparison with the
+  frozen runtime-closure ZIP.
+- No baseline source file was deleted.
+- The list deliberately includes compatible profile-library changes already present in
+  the user's workspace before this final-closure pass; they were preserved, not reverted.
+- dist entries were produced by npm.cmd run build and mirror their root/source files.
+
+MODIFIED — root, profile library, version and documentation
+  docs/DATA_FORMAT.md
+  manifest.json
+  options.html
+  options.js
+  package.json
+  popup.js
+  samples/sample-unified-resume.json
+
+MODIFIED — runtime source
+  src/adapters/generic-adapter.js
+  src/adapters/undergraduate-awards.js
+  src/content-controller.js
+  src/controls/adapters/date-like-adapter.js
+  src/core/array-handler.js
+  src/core/autofill-engine.js
+  src/core/event-dispatcher.js
+  src/core/field-detector.js
+  src/core/field-matcher.js
+  src/mappings/field-aliases.js
+
+MODIFIED — browser fixtures, E2E and Matrix
+  tests/e2e/compound-ant.e2e.mjs
+  tests/e2e/extension-load.e2e.mjs
+  tests/e2e/profile-management.e2e.mjs
+  tests/e2e/support/headless-browser.mjs
+  tests/fixtures/compound-ant-application.html
+  tests/fixtures/compound-ant-application.js
+  tests/matrix/matrix-cases.mjs
+  tests/matrix/phase3-5-completion-closure.test.mjs
+
+ADDED/MODIFIED — unit regressions
+  ADDED    tests/unit/application-profile-library-coverage.test.mjs
+  ADDED    tests/unit/award-category-semantic.test.mjs
+  MODIFIED tests/unit/phase3-1-e-zero-row-repeatable.test.mjs
+  MODIFIED tests/unit/phase3-3-2-1-calendar-mode-strategy.test.mjs
+  MODIFIED tests/unit/phase3-3-2-2b-calendar-transition-hardening.test.mjs
+  MODIFIED tests/unit/phase3-3-2-phase3-3-3-compound-fixture-contract.test.mjs
+  MODIFIED tests/unit/phase3-5-repeatable-action-ownership-runtime.test.mjs
+  MODIFIED tests/unit/phase3-5-runtime-freshness-gate.test.mjs
+  MODIFIED tests/unit/phase3-5-schema-coverage-runtime.test.mjs
+  MODIFIED tests/unit/phase3-5-semantic-collection-singleton-binding.test.mjs
+  MODIFIED tests/unit/phase3-5-stable-scan-telemetry.test.mjs
+
+ADDED — delivery script
+  scripts/package-phase3-5-final-closure.ps1
+
+ADDED — final closure evidence
+  PHASE3_5_FINAL_CLOSURE_REPORT.md
+  PHASE3_5_REAL_DOM_SINGLETON_REPORT.md
+  PHASE3_5_REPEATABLE_ACTION_BOUNDARY_REPORT.md
+  PHASE3_5_LEGACY_ANT_DATE_SAFETY_REPORT.md
+  PHASE3_5_CASCADER_FINAL_REPORT.md
+  PHASE3_5_ANNOTATED_LABEL_GPA_REPORT.md
+  PHASE3_5_STABLE_SCAN_FINAL_REPORT.md
+  PHASE3_5_FINAL_TEST_RESULT.txt
+  PHASE3_5_FINAL_BUILD_RESULT.txt
+  PHASE3_5_FINAL_CHANGED_FILES.txt
+
+MODIFIED — generated dist mirrors
+  dist/docs/DATA_FORMAT.md
+  dist/manifest.json
+  dist/options.html
+  dist/options.js
+  dist/popup.js
+  dist/samples/sample-unified-resume.json
+  dist/src/adapters/generic-adapter.js
+  dist/src/adapters/undergraduate-awards.js
+  dist/src/content-controller.js
+  dist/src/controls/adapters/date-like-adapter.js
+  dist/src/core/array-handler.js
+  dist/src/core/autofill-engine.js
+  dist/src/core/event-dispatcher.js
+  dist/src/core/field-detector.js
+  dist/src/core/field-matcher.js
+  dist/src/mappings/field-aliases.js
+
+Generated after this inventory and intentionally excluded from archive recursion:
+  JobFill_phase3_5_final_closure_replace.zip
+  JobFill_phase3_5_final_closure_complete.zip
+
+Unchanged legacy Phase 3.5 runtime reports remain in the workspace for history but are
+superseded and excluded from the final closure ZIPs by the packaging script.

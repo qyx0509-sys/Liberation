@@ -1,0 +1,30 @@
+# 个人简历数据（含真实信息，不上传）
+resume-data.json
+
+# 截图裁剪缓存
+crops/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+.claude/
+
+# 本地依赖、环境变量与凭据
+node_modules/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# 本地缓存、录屏检查与打包输出
+/tmp/
+/output/
+/ui-review/
+/.dist-stage-*/
+*.zip
+*.log
+__pycache__/
+
+# 本地演示资料副本；仓库示例位于 samples/
+/01_完整演示资料.json

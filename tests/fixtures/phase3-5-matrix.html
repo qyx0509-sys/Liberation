@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Phase 3.5 sanitized structural-equivalent browser matrix</title>
+  <link rel="stylesheet" href="phase3-5-matrix.css">
+</head>
+<body>
+  <header class="matrix-header">
+    <p class="eyebrow">JobFill Phase 3.5</p>
+    <h1>Sanitized structural-equivalent browser matrix</h1>
+    <p>这些组件只复现公开 DOM / ARIA 结构和交互边界，不包含任何真实站点代码、数据或网络请求。</p>
+  </header>
+
+  <main id="phase35-matrix-shell">
+    <section id="case-jqx-compound" class="matrix-case" data-matrix-case="jqx-compound">
+      <h2>JQX Compound（结构等价）</h2>
+      <div class="case-grid">
+        <div class="form-item">
+          <label id="jqx-gender-label" for="jqx-gender">性别</label>
+          <div class="jqx-widget jqx-dropdownlist" data-component="jqx-select">
+            <input id="jqx-gender" class="jqx-combobox-input" role="combobox" aria-labelledby="jqx-gender-label" aria-controls="jqx-gender-list" aria-expanded="false" data-value="">
+            <button class="jqx-combobox-arrow" type="button" tabindex="-1" aria-label="选择性别">▾</button>
+          </div>
+          <div id="jqx-gender-list" class="jqx-listbox matrix-overlay" role="listbox" hidden>
+            <button type="button" class="jqx-listitem jqx-listitem-element" role="option" data-value="男">男</button>
+            <button type="button" class="jqx-listitem jqx-listitem-element" role="option" data-value="女">女</button>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label id="jqx-major-label" for="jqx-major">专业</label>
+          <div class="jqx-widget jqx-dropdownlist" data-component="jqx-select">
+            <input id="jqx-major" class="jqx-combobox-input" role="combobox" aria-labelledby="jqx-major-label" aria-controls="jqx-major-list" aria-expanded="false" data-value="">
+            <button class="jqx-combobox-arrow" type="button" tabindex="-1" aria-label="选择专业">▾</button>
+          </div>
+          <div id="jqx-major-list" class="jqx-listbox matrix-overlay" role="listbox" hidden>
+            <button type="button" class="jqx-listitem jqx-listitem-element" role="option" data-value="计算机科学与技术">计算机科学与技术</button>
+            <button type="button" class="jqx-listitem jqx-listitem-element" role="option" data-value="软件工程">软件工程</button>
+          </div>
+        </div>
+      </div>
+
+      <section id="jqx-practice-region" class="repeatable-region" data-repeat-list data-section="practice">
+        <h3>社会实践</h3>
+        <table aria-label="社会实践">
+          <thead><tr><th>开始时间</th><th>结束时间</th><th>地点</th><th>主要内容</th><th>操作</th></tr></thead>
+          <tbody id="jqx-practice-body"></tbody>
+        </table>
+        <button id="jqx-practice-add" type="button" data-add-practice>新增</button>
+      </section>
+      <aside id="jqx-decoy-region" class="repeatable-region decoy-region" aria-label="无关栏目">
+        <h3>无关栏目</h3>
+        <button id="jqx-decoy-add" type="button">新增</button>
+      </aside>
+      <div id="jqx-cross-widget-list" class="jqx-listbox matrix-overlay stale-overlay" role="listbox">
+        <button type="button" class="jqx-listitem jqx-listitem-element danger-overlay-option" role="option" data-value="错误选项">错误选项</button>
+      </div>
+    </section>
+
+    <section id="case-native-html-form" class="matrix-case" data-matrix-case="native-html-form" hidden>
+      <h2>Native HTML（结构等价）</h2>
+      <form id="native-form">
+        <div class="form-item"><label for="native-name">姓名</label><input id="native-name" name="name" autocomplete="name"></div>
+        <div class="form-item"><label for="native-gender">性别</label><select id="native-gender"><option value="">请选择</option><option value="男">男</option><option value="女">女</option></select></div>
+        <div class="form-item"><label for="native-birthday">出生日期</label><input id="native-birthday" type="date"></div>
+        <fieldset class="form-item"><legend>是否服从调剂</legend><label><input id="native-adjust-yes" type="radio" name="adjust" value="是">是</label><label><input id="native-adjust-no" type="radio" name="adjust" value="否">否</label></fieldset>
+        <div class="form-item"><label><input id="native-ordinary-checkbox" type="checkbox">订阅普通通知</label></div>
+        <div class="form-item"><label for="native-archive-region">档案所在地</label><input id="native-archive-region"></div>
+        <div class="form-item"><label for="native-address">通讯地址</label><textarea id="native-address"></textarea></div>
+        <div class="form-item"><label for="native-statement">个人陈述</label><textarea id="native-statement"></textarea></div>
+        <div class="form-item"><label for="native-existing">已有页面内容</label><input id="native-existing" value="保留值"></div>
+        <div class="form-item"><label for="native-unknown-file">其他材料</label><input id="native-unknown-file" type="file"></div>
+        <button id="native-submit" type="submit">提交</button>
+        <button id="native-reset" type="reset">重置</button>
+      </form>
+    </section>
+
+    <section id="case-modern-ant-design" class="matrix-case" data-matrix-case="modern-ant-design" hidden>
+      <h2>Modern Ant Design（结构等价）</h2>
+      <div class="ant-form ant-form-vertical">
+        <div class="ant-form-item">
+          <div class="ant-form-item-label" id="ant-major-label">专业</div>
+          <div id="ant-major" class="ant-select ant-select-single ant-select-show-arrow ant-select-selector" role="combobox" aria-labelledby="ant-major-label" aria-controls="ant-major-list" aria-expanded="false" data-value="">
+            <span class="ant-select-selection-item"></span><span class="ant-select-arrow">▾</span>
+          </div>
+        </div>
+        <div class="ant-form-item">
+          <label class="ant-form-item-label" for="ant-enrollment">入学年月</label>
+          <div class="ant-picker ant-picker-month"><input id="ant-enrollment" class="ant-picker-input" type="month"></div>
+        </div>
+        <div class="ant-form-item">
+          <label class="ant-form-item-label" for="ant-graduation">毕业年月</label>
+          <div class="ant-picker ant-picker-month"><input id="ant-graduation" class="ant-picker-input" type="month"></div>
+        </div>
+        <div class="ant-form-item">
+          <div class="ant-form-item-label" id="ant-region-label">生源地（级联）</div>
+          <div id="ant-region" class="ant-cascader ant-cascader-picker" aria-labelledby="ant-region-label" data-value="">
+            <input id="ant-region-trigger" class="ant-input ant-cascader-input" role="combobox" aria-haspopup="menu" aria-controls="ant-region-panel" aria-expanded="false" placeholder="请选择省/市">
+            <span class="ant-cascader-picker-label" hidden></span>
+          </div>
+        </div>
+      </div>
+      <div id="ant-major-list" class="ant-select-dropdown matrix-overlay" role="listbox" hidden>
+        <button type="button" class="ant-select-item-option" role="option" data-value="计算机科学与技术">计算机科学与技术</button>
+        <button type="button" class="ant-select-item-option" role="option" data-value="软件工程">软件工程</button>
+      </div>
+      <div id="ant-region-panel" class="ant-cascader-menus matrix-overlay" data-cascader-panel hidden>
+        <ul class="ant-cascader-menu" data-cascader-menu data-cascader-level="0">
+          <li class="ant-cascader-menu-item" role="menuitem" data-value="江苏省"><span class="ant-cascader-menu-item-content">江苏省</span></li>
+          <li class="ant-cascader-menu-item" role="menuitem" data-value="北京市"><span class="ant-cascader-menu-item-content">北京市</span></li>
+        </ul>
+      </div>
+      <div id="ant-stale-list" class="ant-select-dropdown matrix-overlay stale-overlay" role="listbox">
+        <button type="button" class="ant-select-item-option danger-overlay-option" role="option" data-value="错误专业">错误专业</button>
+      </div>
+    </section>
+
+    <section id="case-element-plus" class="matrix-case" data-matrix-case="element-plus" hidden>
+      <h2>Element Plus（结构等价）</h2>
+      <div class="el-form el-form--label-top">
+        <div class="el-form-item"><label class="el-form-item__label" for="el-school">学校名称</label><input id="el-school" class="el-input__inner"></div>
+        <div class="el-form-item">
+          <div class="el-form-item__label" id="el-major-label">专业</div>
+          <div id="el-major" class="el-select el-select__wrapper" role="combobox" aria-labelledby="el-major-label" aria-controls="el-major-list" aria-expanded="false" data-value="">
+            <span class="el-select__selected-value selected-value"></span><span class="el-select__caret">▾</span>
+          </div>
+        </div>
+        <div class="el-form-item"><label class="el-form-item__label" for="el-enrollment">入学年月</label><input id="el-enrollment" class="el-input__inner el-date-editor el-date-editor--month" type="month"></div>
+        <div class="el-form-item"><label class="el-form-item__label" for="el-graduation">毕业年月</label><input id="el-graduation" class="el-input__inner el-date-editor el-date-editor--month" type="month"></div>
+        <div class="el-form-item">
+          <div class="el-form-item__label" id="el-region-label">籍贯地区（级联）</div>
+          <div id="el-region" class="el-cascader" aria-labelledby="el-region-label" data-value="">
+            <input id="el-region-trigger" class="el-input__inner" role="combobox" aria-haspopup="menu" aria-controls="el-region-panel" aria-expanded="false" placeholder="请选择省/市">
+            <span class="el-cascader__label" hidden></span>
+          </div>
+        </div>
+      </div>
+      <div id="el-major-list" class="el-select-dropdown el-popper matrix-overlay" role="listbox" hidden>
+        <button type="button" class="el-select-dropdown__item" role="option" data-value="计算机科学与技术">计算机科学与技术</button>
+        <button type="button" class="el-select-dropdown__item" role="option" data-value="软件工程">软件工程</button>
+      </div>
+      <div id="el-region-panel" class="el-cascader__dropdown el-popper matrix-overlay" data-cascader-panel hidden>
+        <ul class="el-cascader-menu" data-cascader-menu data-cascader-level="0">
+          <li class="el-cascader-node" role="menuitem" data-value="江苏省"><span class="el-cascader-node__label">江苏省</span></li>
+          <li class="el-cascader-node" role="menuitem" data-value="北京市"><span class="el-cascader-node__label">北京市</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="case-aria-generic" class="matrix-case" data-matrix-case="aria-generic" hidden>
+      <h2>Pure ARIA（结构等价）</h2>
+      <div class="form-item">
+        <label id="aria-ethnicity-label">民族</label>
+        <div id="aria-ethnicity" class="aria-combobox" role="combobox" tabindex="0" aria-labelledby="aria-ethnicity-label" aria-controls="aria-ethnicity-list" aria-expanded="false" data-value="">
+          <span class="selected-value"></span><span aria-hidden="true">▾</span>
+        </div>
+      </div>
+      <div id="aria-ethnicity-list" class="aria-listbox matrix-overlay" role="listbox" hidden>
+        <button type="button" role="option" data-value="汉族">汉族</button>
+        <button type="button" role="option" data-value="蒙古族">蒙古族</button>
+      </div>
+      <div class="form-item">
+        <label id="aria-political-label">政治面貌</label>
+        <div id="aria-political" class="aria-combobox" role="combobox" tabindex="0" aria-labelledby="aria-political-label" aria-controls="aria-political-list aria-political-missing" aria-expanded="false" data-value="">
+          <span class="selected-value"></span><span aria-hidden="true">▾</span>
+        </div>
+      </div>
+      <div id="aria-political-list" class="aria-listbox matrix-overlay" role="listbox" hidden>
+        <button type="button" role="option" data-value="中共党员">中共党员</button>
+        <button type="button" role="option" data-value="共青团员">共青团员</button>
+      </div>
+      <div id="aria-noise-list" class="aria-listbox matrix-overlay stale-overlay" role="listbox">
+        <button type="button" class="danger-overlay-option" role="option" data-value="错误归属">错误归属</button>
+      </div>
+    </section>
+
+    <section id="case-react-select" class="matrix-case" data-matrix-case="react-select" hidden>
+      <h2>React Select（结构等价）</h2>
+      <div class="form-item">
+        <label id="react-ethnicity-label">民族</label>
+        <div id="react-ethnicity" class="react-select__control" role="combobox" tabindex="0" aria-labelledby="react-ethnicity-label" aria-controls="react-ethnicity-menu" aria-expanded="false" data-value="">
+          <span class="react-select__single-value selected-value"></span><span class="react-select__indicator">▾</span>
+        </div>
+      </div>
+      <div class="matrix-portal-root" data-react-select-portal>
+        <div id="react-ethnicity-menu" class="react-select__menu matrix-overlay" role="listbox" hidden>
+          <button type="button" class="react-select__option" role="option" data-value="汉族">汉族</button>
+          <button type="button" class="react-select__option" role="option" data-value="蒙古族">蒙古族</button>
+        </div>
+      </div>
+      <div class="form-item">
+        <label id="react-political-label">政治面貌</label>
+        <div id="react-political" class="react-select__control" role="combobox" tabindex="0" aria-labelledby="react-political-label" aria-controls="react-political-menu" aria-expanded="false" data-value="">
+          <span class="react-select__single-value selected-value"></span><span class="react-select__indicator">▾</span>
+        </div>
+      </div>
+      <div class="matrix-portal-root" data-react-select-portal>
+        <div id="react-political-menu" class="react-select__menu matrix-overlay" role="listbox" hidden>
+          <button type="button" class="react-select__option" role="option" data-value="中共党员">中共党员</button>
+          <button type="button" class="react-select__option" role="option" data-value="共青团员">共青团员</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="matrix-danger-bay" aria-label="安全硬门对抗控件">
+    <button id="danger-submit" type="button">提交申请</button>
+    <button id="danger-next" type="button">下一步</button>
+    <button id="danger-delete" type="button">删除记录</button>
+    <button id="danger-viewer-prev" type="button">查看器上一页</button>
+    <button id="danger-viewer-next" type="button">查看器下一页</button>
+    <label><input id="danger-legal" type="checkbox">本人确认并同意法律声明</label>
+    <label>未知上传<input id="danger-upload" type="file"></label>
+  </aside>
+
+  <script src="phase3-5-matrix.js"></script>
+</body>
+</html>
